@@ -45,7 +45,7 @@ a {
 .sub-menu {
     position: absolute;
     color: #000000;
-    width: fit-content;
+    width: max-content;
     top: 45px;
     padding: 10px 20px 10px 20px;
     border: 0px solid #4a4c4f;
