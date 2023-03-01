@@ -36,7 +36,7 @@ a {
     display: flex;
 }
 .menu > li {
-    padding: 20px;
+    padding: 30px;
     position: relative;
 }
 .menu > li:hover .sub-menu {
@@ -46,7 +46,7 @@ a {
     position: absolute;
     color: #000000;
     width: max-content;
-    top: 45px;
+    top: 55px;
     padding: 10px 20px 10px 20px;
     border: 0px solid #4a4c4f;
     border-radius: 8px;
