@@ -80,6 +80,8 @@ a {
     padding-left: 20px;
 }
 .sub-menu li ul a:hover{
+    font-size: 16px;
+    font-weight: bold;
     border: 0px solid #4a4c4f;
     border-radius: 8px;
     background-color: #ffffff;
