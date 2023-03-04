@@ -79,6 +79,13 @@ a {
     font-weight: normal;
     padding-left: 20px;
 }
+.sub-menu li ul a:hover{
+    border: 0px solid #4a4c4f;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    padding: 5px 15px;
+}
 .menu > li > a {
     font-size: 18px;
     font-weight: bold;
