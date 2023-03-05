@@ -33,15 +33,16 @@ a {
     flex: 9;
 }
 .menu {
-    flex: 3;
     align-items: center;
-    padding: 0px 200px;
+    padding: 0px 12%;
     height: 50px;
+    max-height: 100%;
     background-color:  #4a4c4f;
     display: flex;
 }
 .menu > li {
-    padding: 15px 50px;
+    padding: 15px 4%;
+    line-height: 50px;
     position: relative;
 }
 .menu > li:hover{
