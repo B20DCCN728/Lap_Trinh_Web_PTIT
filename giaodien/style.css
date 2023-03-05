@@ -42,7 +42,6 @@ a {
 }
 .menu > li {
     padding: 15px 4%;
-    line-height: 50px;
     position: relative;
 }
 .menu > li:hover{
