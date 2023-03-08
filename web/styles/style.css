@@ -7,7 +7,7 @@
 header {
     display: flex;
     justify-content: space-between;
-    padding: 12px 200px;
+    padding: 12px 15%;
     width: 100%;
     height: 90px;
     align-items: center;
@@ -28,9 +28,15 @@ a {
     width: 100%;
     height: 60px;
 }
-.others {
+.input {
     padding: 30px;
-    flex: 9;
+    flex: 6;
+}
+.other {
+    flex: 3
+}
+#giohang {
+    height: 60px;
 }
 .menu {
     align-items: center;
@@ -96,7 +102,7 @@ a {
     line-height: 20px;
 }
 input[type=text] {  
-    width: 50%;  
+    width: 100%;  
     padding: 12px 20px;  
     margin: 8px 0;
     border: 1px solid;
