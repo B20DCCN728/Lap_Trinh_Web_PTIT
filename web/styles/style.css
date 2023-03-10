@@ -119,3 +119,13 @@ input[type=text] {
     height: 50px;
     padding: 1% 5%;
 }
+#ic-giohang:hover{
+    border: 0px solid #4a4c4f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  
+}
+#ic-acount:hover{
+    border: 0px solid #4a4c4f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  
+}
