@@ -112,11 +112,11 @@ input[type=text] {
     position: relative;
 }
 #ic-giohang {
-    height: 50px;
+    height: 40px;
     padding: 1% 5%;
 }
 #ic-acount {
-    height: 50px;
+    height: 40px;
     padding: 1% 5%;
 }
 #ic-giohang:hover{
