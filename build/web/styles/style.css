@@ -28,16 +28,6 @@ a {
     width: 100%;
     height: 60px;
 }
-.input {
-    padding: 30px;
-    flex: 6;
-}
-.other {
-    flex: 3
-}
-#giohang {
-    height: 60px;
-}
 .menu {
     align-items: center;
     padding: 0px 12%;
@@ -101,10 +91,41 @@ a {
     display: block;
     line-height: 20px;
 }
+.input {
+    padding: 30px;
+    flex: 6;
+}
 input[type=text] {  
-    width: 100%;  
+    width: 100%;
+    max-width: 500px;
     padding: 12px 20px;  
     margin: 8px 0;
     border: 1px solid;
     border-radius: 3px;
+}
+.other {
+    display: flex;
+    flex: 3
+}
+.other li {
+    padding: 0 15px;
+    position: relative;
+}
+#ic-giohang {
+    height: 50px;
+    padding: 1% 5%;
+}
+#ic-giohang:hover{
+    border: 0px solid #4a4c4f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  
+}
+#ic-acount {
+    height: 50px;
+    padding: 1% 5%;
+}
+#ic-acount:hover{
+    border: 0px solid #4a4c4f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  
 }
