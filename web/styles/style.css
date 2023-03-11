@@ -33,7 +33,7 @@ a {
     padding: 0px 12%;
     height: 50px;
     max-height: 100%;
-    background-color:  #4a4c4f;
+    background-color:  #dcdfe2;
     display: flex;
 }
 .menu > li {
@@ -41,7 +41,7 @@ a {
     position: relative;
 }
 .menu > li:hover{
-    background-color: #000000;
+    background-color: #ffffff;
     border: 0px solid;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(252, 252, 252, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
@@ -87,7 +87,7 @@ a {
 .menu > li > a {
     font-size: 18px;
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
     display: block;
     line-height: 20px;
 }
