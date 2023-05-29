@@ -3,12 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/control/LoginServlet.java</file>
             <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin.jsp</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/styles/style.css</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/styles/style3.css</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/login.jsp</file>
             <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/styles/style4.css</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/styles/style2.css</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/index.html</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/orderlist.jsp</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/model/User.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/context/UserDAO.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/META-INF/context.xml</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/scripts/admin.js</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/home.jsp</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/model/Order.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/control/OrderListServlet.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/control/home.java</file>
         </group>
     </open-files>
 </project-private>

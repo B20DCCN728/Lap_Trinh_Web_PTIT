@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="model.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -5,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style4.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
+    <link rel="stylesheet" href="admin_styles/style4.css">
     <title>Phụ Kiện Công Nghệ</title>
 </head>
 <body>
@@ -68,9 +71,9 @@
     <nav>
         <ul>
             <li>
-                <a id="tongquan" href="admin/home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
+                <a id="tongquan" href="home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
             </li>
-            <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
+            <li class="sub-menu"><i class="fa fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Sản phẩm</span>
                 <ul>
                     <li>
                         <a href="manageproduct.jsp">Tất cả sản phẩm</a>
@@ -99,7 +102,7 @@
             <li class="sub-menu"><span class="menu-item-parent">Đơn hàng</span>
                 <ul>
                     <li>
-                        <a href="admin/orderlist">Đơn hàng</a>
+                        <a href="orderlist">Đơn hàng</a>
                     </li>
                     <li>
                         <a href="/admin#/order/shipping">Vận chuyển</a>
@@ -126,6 +129,61 @@
     </nav>
 
 </aside>
+<div id="right-panel">
+                <div id="block-work">
+<!--                    <a id="link-all-nv" class="menu-work menu-item" href="management?work=2">Tất cả nhân viên</a>
+                    <a id="link-current-nv" class="menu-work menu-item" href="management?work=1">Nhân viên hiện tại</a>
+                    <a id="link-retired-nv" class="menu-work menu-item" href="management?work=0">Nhân viên đã nghỉ việc</a>-->
+
+                </div>
+                    
+                <div id="block-table" class="main-block">
+                                        
+<!--                    <h2 class="heading"> Bảng thông tin </h2>-->
+                    
+                    <div id="box">
+                        <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th id="idleft" class="table-header col1" >Mã đơn</th>
+                                    <th class="table-header col2">Ngày đặt hàng</th>
+                                    <th class="table-header col2">Ngày nhận hàng</th>
+                                    <th class="table-header col2">Khách hàng</th>
+                                    <th class="table-header col2">Sản phẩm</th>
+                                    <th class="table-header col1">Số lượng</th>
+                                    <th class="table-header col1">Đơn Giá</th>
+                                    <th class="table-header col1">Khuyến Mãi</th>
+                                    <th class="table-header col3">Tổng Thanh Toán</th>
+                                    <th class="table-header col2">Ghi Chú</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <%
+                            List<Order> list_Order = (List<Order>)request.getAttribute("list_Order");
+                            int t = 0, k = 0, j;
+                            for(Order i:list_Order){
+                                int id = 1000000 + i.getId();
+                        %>
+                                <tr onclick="insert(<%=i.getId()%>)">
+                                    <td class="center col0"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
+                                    <td class="center col2"><%=i.getCreate_date()%></td>
+                                    <td class="center col1"><%=i.getComplete_date()%></td>
+                                    <td class="left col2"><%=i.getUser_id()%></td>
+                                    <td class="left col2"><%=i.getProduct_id()%></td>
+                                    <td class="right col2"><%=i.getQuantity()%></td>
+                                    <td class="right col5"><%=i.getPrice()%></td>
+                                    <td class="right col3"><%=i.getDiscount()%></td>
+                                    <td class="right col4"><%=i.getTotal()%></td>
+                                    <td class="left col4"><%=i.getNote()%></td>
+                                </tr>
+                         <%
+                            }
+                        %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
 </body>
-<script src="scripts/admin.js"></script>
+<script src="admin_scripts/admin.js"></script>
 </html>

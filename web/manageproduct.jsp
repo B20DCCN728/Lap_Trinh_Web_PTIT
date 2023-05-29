@@ -68,7 +68,7 @@
     <nav>
         <ul>
             <li>
-                <a id="tongquan" href="admin/home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
+                <a id="tongquan" href="/admin#/home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
             </li>
             <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
                 <ul>
@@ -99,7 +99,7 @@
             <li class="sub-menu"><span class="menu-item-parent">Đơn hàng</span>
                 <ul>
                     <li>
-                        <a href="admin/orderlist">Đơn hàng</a>
+                        <a href="/admin#/order">Đơn hàng</a>
                     </li>
                     <li>
                         <a href="/admin#/order/shipping">Vận chuyển</a>
@@ -126,6 +126,71 @@
     </nav>
 
 </aside>
+<div id="right-panel">
+                <div id="block-work">
+<!--                    <a id="link-all-nv" class="menu-work menu-item" href="management?work=2">Tất cả nhân viên</a>
+                    <a id="link-current-nv" class="menu-work menu-item" href="management?work=1">Nhân viên hiện tại</a>
+                    <a id="link-retired-nv" class="menu-work menu-item" href="management?work=0">Nhân viên đã nghỉ việc</a>-->
+
+                </div>
+                    
+                <div id="block-table" class="main-block">
+                                        
+<!--                    <h2 class="heading"> Bảng thông tin </h2>-->
+                    
+                    <div id="box">
+                        <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th id="idleft" class="table-header col0" >ID</th>
+                                    <th class="table-header col2">Họ</th>
+                                    <th class="table-header col1">Tên</th>
+                                    <th class="table-header col2">Ngày sinh</th>
+                                    <th class="table-header col1">Giới tính</th>
+                                    <th class="table-header col2">SĐT</th>
+                                    <th class="table-header col5">Địa chỉ</th>
+                                    <th class="table-header col3">Ngày nhận việc</th>
+                                    <th class="table-header col4">Chức vụ</th>
+                                    <th class="table-header col2">Mức Lương</th>
+                                    <th class="table-header col4">Chú thích</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <%
+                            List<NV> list = (List<NV>)request.getAttribute("listNV");
+                            int t = 0, k = 0, j;
+                            for(NV i:list){
+                                t++; k = t%2;
+                                String[] w = i.getHoten().split("\\s+");
+                                String fname = "";
+                                for(j=0; j<w.length-1; j++){
+                                    fname+= w[j] + " ";
+                                }
+                                fname.trim();
+                                String lname = w[j];
+                        %>
+                                <tr onclick="insert(<%=i.getId()%>)">
+                                    <td class="center col0"><%=i.getId()%></td>
+                                    <td class="left col2"><%=fname%></td>
+                                    <td class="left col1"><%=lname%></td>
+                                    <td class="center col2"><%=i.getNgaysinh()%></td>
+                                    <td class="left col2"><%=i.getGioitinh()%></td>
+                                    <td class="center col2"><%=i.getSdt()%></td>
+                                    <td class="left col5"><%=i.getDiachi()%></td>
+                                    <td class="center col3"><%=i.getNgaynhanviec()%></td>
+                                    <td class="left col4"><%=i.getChucvu()%></td>
+                                    <td class="right col2"><%=i.getMucluong()%></td>
+                                    <td class="left col4"><%=i.getChuthich()%></td>
+                                    <td style="display:none"><%=i.getImage()%></td>
+                                </tr>
+                         <%
+                            }
+                        %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
 </body>
 <script src="scripts/admin.js"></script>
 </html>

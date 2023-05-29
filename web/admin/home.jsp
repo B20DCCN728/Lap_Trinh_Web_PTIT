@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style4.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
+    <link rel="stylesheet" href="admin_styles/style4.css">
     <title>Phụ Kiện Công Nghệ</title>
 </head>
 <body>
@@ -68,9 +69,9 @@
     <nav>
         <ul>
             <li>
-                <a id="tongquan" href="admin/home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
+                <a id="tongquan" href="home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
             </li>
-            <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
+            <li class="sub-menu"><i class="fa fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Sản phẩm</span>
                 <ul>
                     <li>
                         <a href="manageproduct.jsp">Tất cả sản phẩm</a>
@@ -99,7 +100,7 @@
             <li class="sub-menu"><span class="menu-item-parent">Đơn hàng</span>
                 <ul>
                     <li>
-                        <a href="admin/orderlist">Đơn hàng</a>
+                        <a href="orderlist">Đơn hàng</a>
                     </li>
                     <li>
                         <a href="/admin#/order/shipping">Vận chuyển</a>
@@ -127,5 +128,5 @@
 
 </aside>
 </body>
-<script src="scripts/admin.js"></script>
+<script src="admin_scripts/admin.js"></script>
 </html>
