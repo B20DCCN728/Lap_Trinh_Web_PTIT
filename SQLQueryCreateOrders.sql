@@ -1,3 +1,4 @@
+--tblOrders--
 CREATE TABLE Orders (
 	id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	create_date DATE NOT NULL,
