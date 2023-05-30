@@ -1,3 +1,4 @@
+--tblUsers--
 CREATE TABLE Users (
 	id INT IDENTITY PRIMARY KEY,
 	fullname NVARCHAR(50) NOT NULL,
