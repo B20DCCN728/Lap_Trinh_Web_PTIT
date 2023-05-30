@@ -2,17 +2,20 @@ package model;
 
 public class User {
     private int id;
-    private String fullname, email, phone, address, password;
+    private String fullname, dob, phone, email, password, address;
     private int is_admin;
+    private String note;
 
-    public User(int id, String fullname, String email, String phone, String address, String password, int is_admin) {
+    public User(int id, String fullname, String dob, String phone, String email, String password, String address, int is_admin, String note) {
         this.id = id;
         this.fullname = fullname;
-        this.email = email;
+        this.dob = dob;
         this.phone = phone;
-        this.address = address;
+        this.email = email;
         this.password = password;
+        this.address = address;
         this.is_admin = is_admin;
+        this.note = note;
     }
 
     public int getId() {
@@ -31,12 +34,12 @@ public class User {
         this.fullname = fullname;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDob() {
+        return dob;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getPhone() {
@@ -47,12 +50,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -63,6 +66,14 @@ public class User {
         this.password = password;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getIs_admin() {
         return is_admin;
     }
@@ -70,6 +81,13 @@ public class User {
     public void setIs_admin(int is_admin) {
         this.is_admin = is_admin;
     }
-    
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
     
 }

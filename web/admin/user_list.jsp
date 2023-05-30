@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="model.User"%>
+<%@page import="model.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -127,6 +130,64 @@
     </nav>
 
 </aside>
+<div id="right-panel">
+                <div id="block-table" class="main-block">
+                                        
+<!--                    <h2 class="heading"> Bảng thông tin </h2>-->
+                    
+                    <div id="box">
+                        <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th class="table-header col1">ID</th>
+                                    <th class="table-header col2">Họ</th>
+                                    <th class="table-header col2">Tên</th>
+                                    <th class="table-header col2">Ngày sinh</th>
+                                    <th class="table-header col2">Số đơn hàng</th>
+                                    <th class="table-header col1">Số sản phẩm</th>
+                                    <th class="table-header col1">Tổng giá trị</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <%
+                            List<User> list_User = (List<User>)request.getAttribute("list_User");
+                            List<Order> list_Order = (List<Order>)request.getAttribute("list_Order");
+                            int j = 0;
+                            for(User i:list_User){
+                                int id = 1000000 + i.getId();
+                                String[] w = i.getFullname().split("\\s+");
+                                String fname = "";
+                                for(j=0; j<w.length-1; j++){
+                                    fname+= w[j] + " ";
+                                }
+                                fname.trim();
+                                String lname = w[j];
+                                int num_order=0, num_product=0, total_cost=0;
+                                for(Order o : list_Order){
+                                    if(o.getUser_id()==i.getId()){
+                                        num_order++;
+                                        num_product+= o.getQuantity();
+                                        total_cost+= o.getTotal();
+                                    }
+                                }
+                        %>
+                                <tr>
+                                    <td class="center col0"><a href="user-detail?id=<%=id%>">#<%=id%></a></td>
+                                    <td class="center col2"><%=fname%></td>
+                                    <td class="center col1"><%=lname%></td>
+                                    <td class="left col2"><%=i.getDob()%></td>
+                                    <td class="left col2"><%=num_order%></td>
+                                    <td class="right col2"><%=num_product%></td>
+                                    <td class="right col5"><%=total_cost%></td>
+                                </tr>
+                         <%
+                            }
+                        %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
 </body>
 <script src="admin_scripts/admin.js"></script>
 </html>

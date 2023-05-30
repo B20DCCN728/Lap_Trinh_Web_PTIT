@@ -116,7 +116,7 @@
             <li class="sub-menu"><span class="menu-item-parent">Khách hàng</span>
                 <ul>
                     <li>
-                        <a href="/admin#/member">Danh sách khách hàng</a>
+                        <a href="user-list">Danh sách khách hàng</a>
                     </li>
                     <li>
                         <a href="/admin#/contact">Liên hệ từ khách hàng</a>
