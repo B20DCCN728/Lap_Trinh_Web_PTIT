@@ -69,12 +69,12 @@
     <nav>
         <ul>
             <li>
-                <a id="tongquan" href="home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
+                <a id="tongquan" href="home" title="Tổng quan"><span class="menu-item-parent">Tổng quan</span></a>
             </li>
-            <li class="sub-menu"><i class="fa fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Sản phẩm</span>
+            <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
                 <ul>
                     <li>
-                        <a href="manageproduct.jsp">Tất cả sản phẩm</a>
+                        <a href="product-list">Tất cả sản phẩm</a>
                     </li>
                     <li>
                         <a href="/admin#/productgroup">Nhóm sản phẩm</a>

@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="model.Order"%>
+<%@page import="model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
     <link rel="stylesheet" href="admin_styles/style4.css">
+    <link rel="stylesheet" href="admin_styles/product_detail.css">
     <title>Phụ Kiện Công Nghệ</title>
 </head>
 <body>
@@ -130,52 +131,37 @@
 
 </aside>
 <div id="right-panel">
-                <div id="block-table" class="main-block">
-                                        
-<!--                    <h2 class="heading"> Bảng thông tin </h2>-->
-                    
-                    <div id="box">
-                        <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
-                            <thead>
-                                <tr>
-                                    <th id="idleft" class="table-header col1" >Mã đơn</th>
-                                    <th class="table-header col2">Ngày đặt hàng</th>
-                                    <th class="table-header col2">Ngày nhận hàng</th>
-                                    <th class="table-header col2">Khách hàng</th>
-                                    <th class="table-header col2">Sản phẩm</th>
-                                    <th class="table-header col1">Số lượng</th>
-                                    <th class="table-header col1">Đơn Giá</th>
-                                    <th class="table-header col1">Khuyến Mãi</th>
-                                    <th class="table-header col3">Tổng Thanh Toán</th>
-                                    <th class="table-header col2">Ghi Chú</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        <%
-                            List<Order> list_Order = (List<Order>)request.getAttribute("list_Order");
-                            int t = 0, k = 0, j;
-                            for(Order i:list_Order){
-                                int id = 1000000 + i.getId();
-                        %>
-                                <tr onclick="insert(<%=i.getId()%>)">
-                                    <td class="center col0"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
-                                    <td class="center col2"><%=i.getCreate_date()%></td>
-                                    <td class="center col1"><%=i.getComplete_date()%></td>
-                                    <td class="left col2"><%=i.getUser_id()%></td>
-                                    <td class="left col2"><%=i.getProduct_id()%></td>
-                                    <td class="right col2"><%=i.getQuantity()%></td>
-                                    <td class="right col5"><%=i.getPrice()%></td>
-                                    <td class="right col3"><%=i.getDiscount()%></td>
-                                    <td class="right col4"><%=i.getTotal()%></td>
-                                    <td class="left col4"><%=i.getNote()%></td>
-                                </tr>
-                         <%
-                            }
-                        %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <form method="post">
+    <div id="top">
+        <h1 id="head">Thông tin sản phẩm có ID #<%=request.getAttribute("id")%></h1>
+        <input id="id" name="id" type="text" hidden="true" value="<%=request.getAttribute("id")%>"/>
+        <button class="form-button" id="button-save" type="submit" formaction="update-product-detail">Lưu</button>
+    </div>
+    <div id="content">
+        <div id="product-form">
+            <div class="form-item">
+                <label class="form-label" for="name">Tên sản phẩm</label>
+                <input class="form-input" id="name" name="name" type="text" value="<%=request.getAttribute("name")%>" placeholder="Nhập tên sản phẩm"/>
+            </div>
+            
+            <div class="form-item">
+                <label class="form-label" for="price">Giá bán</label>
+                <input class="form-input" id="price" name="price" type="text" value="<%=request.getAttribute("price")%>" placeholder="Nhập giá bán"/>
+            </div>
+            
+            <div class="form-item">
+                <label class="form-label" for="quantity">Số lượng</label>
+                <input class="form-input" id="quantity" name="quantity" type="text" value="<%=request.getAttribute("quantity")%>" placeholder="Nhập số lượng"/>
+            </div>
+            
+            <div class="form-item2">
+                <label class="form-label" for="des">Mô tả</label>
+                <textarea class="form-textarea form-input" id="des" name="des" type="text" placeholder="Nhập mô tả"><%=request.getAttribute("des")%></textarea>
+            </div>
+        </div>
+    </div>
+    </form>
+   
 </div>
 </body>
 <script src="admin_scripts/admin.js"></script>

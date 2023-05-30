@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
     <link rel="stylesheet" href="admin_styles/style4.css">
+    <link rel="stylesheet" href="admin_styles/order_detail.css">
     <title>Phụ Kiện Công Nghệ</title>
 </head>
 <body>
@@ -71,12 +72,12 @@
     <nav>
         <ul>
             <li>
-                <a id="tongquan" href="home" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span class="menu-item-parent">Tổng quan</span></a>
+                <a id="tongquan" href="home" title="Tổng quan"><span class="menu-item-parent">Tổng quan</span></a>
             </li>
-            <li class="sub-menu"><i class="fa fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Sản phẩm</span>
+            <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
                 <ul>
                     <li>
-                        <a href="manageproduct.jsp">Tất cả sản phẩm</a>
+                        <a href="product-list">Tất cả sản phẩm</a>
                     </li>
                     <li>
                         <a href="/admin#/productgroup">Nhóm sản phẩm</a>
@@ -204,39 +205,39 @@
                             </thead>
                             <tbody>
                                 <tr id="product-row">
-                                    <td class="col5"></td>
-                                    <td class="col4"></td>
-                                    <td class="col1">2</td>
-                                    <td class="center col2">2,000,000 ₫</td>
-                                    <td class="right col2">4,000,000 ₫</td>
+                                    <td class="col5"><%=request.getAttribute("pname")%></td>
+                                    <td class="col4"><img src="<%=request.getAttribute("image")%>" style="height: 20px; width: auto;"/></td>
+                                    <td class="col1"><%=request.getAttribute("quantity")%></td>
+                                    <td class="center col2"><%=request.getAttribute("price")%> ₫</td>
+                                    <td class="right col2"><%=request.getAttribute("cost")%> ₫</td>
                                 </tr>
                                 <tr>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Tổng giá trị sản phẩm:</td>
-                                    <td class="right col2">4,000,000 ₫</td>
+                                    <td class="right col2"><%=request.getAttribute("cost")%> ₫</td>
                                 </tr>
                                 <tr>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Khuyến mãi:</td>
-                                    <td class="right col2">100,000 ₫</td>
+                                    <td class="right col2"><%=request.getAttribute("discount")%> ₫</td>
                                 </tr>
                                 <tr>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Phí vận chuyển:</td>
-                                    <td class="right col2">20,000 ₫</td>
+                                    <td class="right col2">20000 ₫</td>
                                 </tr>
                                 <tr id="order-total">
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Tổng thanh toán:</td>
-                                    <td class="right col2">3,920,000 ₫</td>
+                                    <td class="right col2"><%=request.getAttribute("total")%> ₫</td>
                                 </tr>
                             </tbody>
                         </table>

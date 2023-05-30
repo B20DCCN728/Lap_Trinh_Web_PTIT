@@ -15,7 +15,7 @@ public class Order {
         this.quantity = quantity;
         this.price = price;
         this.discount = discount;
-        this.total = price * quantity - discount;
+        this.total = price * quantity - discount + 20000;
         this.note = note;
     }
 

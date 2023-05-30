@@ -5,7 +5,6 @@
 
 package control;
 
-import context.OrderDAO;
 import context.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,15 +14,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Order;
 import model.Product;
 
 /**
  *
  * @author havanthiep
  */
-@WebServlet(name="OrderDetailServlet", urlPatterns={"/admin/orderdetail"})
-public class OrderDetailServlet extends HttpServlet {
+@WebServlet(name="ProductDetailServlet", urlPatterns={"/admin/product-detail"})
+public class ProductDetailServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,29 +34,19 @@ public class OrderDetailServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
-        ProductDAO pdao = new ProductDAO();
-        List<Product> list_Product = pdao.getProducts();
-        OrderDAO odao = new OrderDAO();
-        List<Order> list_Order = odao.getOrders();
-        for(Order i : list_Order){
-            if(i.getId()==id-1000000){
-                for(Product p : list_Product){
-                    if(p.getId()==i.getProduct_id()){
-                        request.setAttribute("pname", p.getName()); 
-                        request.setAttribute("image", p.getImage());
-                    }
-                }
-                request.setAttribute("quantity", i.getQuantity()); 
+        ProductDAO dao = new ProductDAO();
+        List<Product> list_Product = dao.getProducts();
+        for(Product i : list_Product){
+            if(i.getId()==id-10000){
+                request.setAttribute("name", i.getName());
                 request.setAttribute("price", i.getPrice());
-                request.setAttribute("cost", i.getPrice()*i.getQuantity());
-                request.setAttribute("discount", i.getDiscount());
-                request.setAttribute("total", i.getTotal());
+                request.setAttribute("quantity", i.getQuantity_remain());
+                request.setAttribute("des", i.getDes());
             }
         }
-        
         request.setAttribute("id", id); 
-        request.getRequestDispatcher("order_detail.jsp").forward(request, response);
-    } 
+        request.getRequestDispatcher("product_detail.jsp").forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 

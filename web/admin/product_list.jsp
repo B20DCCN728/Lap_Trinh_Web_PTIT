@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="model.Order"%>
+<%@page import="model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
     <link rel="stylesheet" href="admin_styles/style4.css">
+    <link rel="stylesheet" href="admin_styles/product_list.css">
     <title>Phụ Kiện Công Nghệ</title>
 </head>
 <body>
@@ -130,44 +131,49 @@
 
 </aside>
 <div id="right-panel">
+    
+    <div id="top">
+        <h1 id="head">Danh sách sản phẩm</h1>
+
+        <a class="form-button" id="button-create" href="create_product.jsp">Thêm sản phẩm</a>
+    </div>
+                    
                 <div id="block-table" class="main-block">
-                                        
-<!--                    <h2 class="heading"> Bảng thông tin </h2>-->
                     
                     <div id="box">
                         <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th id="idleft" class="table-header col1" >Mã đơn</th>
-                                    <th class="table-header col2">Ngày đặt hàng</th>
-                                    <th class="table-header col2">Ngày nhận hàng</th>
-                                    <th class="table-header col2">Khách hàng</th>
-                                    <th class="table-header col2">Sản phẩm</th>
-                                    <th class="table-header col1">Số lượng</th>
-                                    <th class="table-header col1">Đơn Giá</th>
-                                    <th class="table-header col1">Khuyến Mãi</th>
-                                    <th class="table-header col3">Tổng Thanh Toán</th>
-                                    <th class="table-header col2">Ghi Chú</th>
+                                    <th id="idleft" class="table-header col1" >Mã SP</th>
+                                    <th class="table-header col2">Tên SP</th>
+                                    <th class="table-header col2">Ảnh</th>
+                                    <th class="table-header col2">Giá</th>
+                                    <th class="table-header col2">Số lượng</th>
+                                    <th class="table-header col1"></th>
+                                    <th class="table-header col1"></th>
+                                    <th class="table-header col1"></th>
+                                    <th class="table-header col3"></th>
+                                    <th class="table-header col2"></th>
                                 </tr>
                             </thead>
                             <tbody>
                         <%
-                            List<Order> list_Order = (List<Order>)request.getAttribute("list_Order");
+                            List<Product> list_Product = (List<Product>)request.getAttribute("list_Product");
                             int t = 0, k = 0, j;
-                            for(Order i:list_Order){
-                                int id = 1000000 + i.getId();
+                            for(Product i:list_Product){
+                                int id = 10000 + i.getId();
                         %>
                                 <tr onclick="insert(<%=i.getId()%>)">
-                                    <td class="center col0"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
-                                    <td class="center col2"><%=i.getCreate_date()%></td>
-                                    <td class="center col1"><%=i.getComplete_date()%></td>
-                                    <td class="left col2"><%=i.getUser_id()%></td>
-                                    <td class="left col2"><%=i.getProduct_id()%></td>
-                                    <td class="right col2"><%=i.getQuantity()%></td>
-                                    <td class="right col5"><%=i.getPrice()%></td>
-                                    <td class="right col3"><%=i.getDiscount()%></td>
-                                    <td class="right col4"><%=i.getTotal()%></td>
-                                    <td class="left col4"><%=i.getNote()%></td>
+                                    <td class="center col0"><a href="product-detail?id=<%=id%>">#<%=id%></a></td>
+                                    <td class="center col2"><%=i.getName()%></td>
+                                    <td class="center col1"><img src="<%=i.getImage()%>" style="height: 30px; width: auto;"/></td>
+                                    <td class="left col2"><%=i.getPrice()%></td>
+                                    <td class="left col2"><%=i.getQuantity_remain()%></td>
+                                    <td class="right col2"></td>
+                                    <td class="right col5"></td>
+                                    <td class="right col3"></td>
+                                    <td class="right col4"></td>
+                                    <td class="left col4"><a class="form-button" id="button-delete" href="delete-product?id=<%=id%>">Xoá</a></td>
                                 </tr>
                          <%
                             }
