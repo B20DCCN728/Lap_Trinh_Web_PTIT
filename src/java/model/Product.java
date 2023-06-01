@@ -2,18 +2,18 @@ package model;
 
 public class Product {
     private int id;
-    private String name, des, supplier;
-    private int price, quantity_remain;
-    private String image;
+    private String name, image, supplier, des;
+    private int price, quantity_sold, quantity_remain;
 
-    public Product(int id, String name, String des, String supplier, int price, int quantity_remain, String image) {
+    public Product(int id, String name, String image, String supplier, String des, int price, int quantity_sold, int quantity_remain) {
         this.id = id;
         this.name = name;
-        this.des = des;
-        this.supplier = supplier;
-        this.price = price;
-        this.quantity_remain = quantity_remain;
         this.image = image;
+        this.supplier = supplier;
+        this.des = des;
+        this.price = price;
+        this.quantity_sold = quantity_sold;
+        this.quantity_remain = quantity_remain;
     }
 
     public int getId() {
@@ -56,6 +56,14 @@ public class Product {
         this.price = price;
     }
 
+    public int getQuantity_sold() {
+        return quantity_sold;
+    }
+
+    public void setQuantity_sold(int quantity_sold) {
+        this.quantity_sold = quantity_sold;
+    }
+
     public int getQuantity_remain() {
         return quantity_remain;
     }
@@ -71,6 +79,5 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    
+
 }

@@ -34,12 +34,14 @@ public class UpdateProductDetailServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String supplier = request.getParameter("supplier");
         int price = Integer.parseInt(request.getParameter("price"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int quantity_remain = Integer.parseInt(request.getParameter("quantity_remain"));
         String des = request.getParameter("des");
         int id = Integer.parseInt(request.getParameter("id"));
         ProductDAO dao = new ProductDAO();
-        dao.updateProducts(name, price, quantity, des, id-10000);;
+        dao.updateProducts(name, image, supplier, price, quantity_remain, des, id);
         List<Product> list_Product = dao.getProducts();
         request.setAttribute("list_Product", list_Product);
         request.getRequestDispatcher("product_list.jsp").forward(request, response);

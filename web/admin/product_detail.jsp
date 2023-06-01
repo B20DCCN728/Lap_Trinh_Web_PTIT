@@ -133,30 +133,46 @@
 <div id="right-panel">
     <form method="post">
     <div id="top">
-        <h1 id="head">Thông tin sản phẩm có ID #<%=request.getAttribute("id")%></h1>
-        <input id="id" name="id" type="text" hidden="true" value="<%=request.getAttribute("id")%>"/>
+        <% Product product = (Product) request.getAttribute("Product"); %>
+        <h1 id="head">Thông tin sản phẩm có ID #<%=10000+product.getId()%></h1>
+        <input id="id" name="id" type="text" hidden="true" value="<%=product.getId()%>"/>
         <button class="form-button" id="button-save" type="submit" formaction="update-product-detail">Lưu</button>
     </div>
     <div id="content">
         <div id="product-form">
             <div class="form-item">
                 <label class="form-label" for="name">Tên sản phẩm</label>
-                <input class="form-input" id="name" name="name" type="text" value="<%=request.getAttribute("name")%>" placeholder="Nhập tên sản phẩm"/>
+                <input class="form-input" id="name" name="name" type="text" value="<%=product.getName()%>" placeholder="Nhập tên sản phẩm"/>
+            </div>
+            
+            <div class="form-item">
+                <label class="form-label" for="image">Hình ảnh</label>
+                <input class="form-input" id="image" name="image" type="text" value="<%=product.getImage()%>" placeholder="Nhập đường dẫn URL"/>
+            </div>
+            
+            <div class="form-item">
+                <label class="form-label" for="supplier">Nhà cung cấp</label>
+                <input class="form-input" id="supplier" name="supplier" type="text" value="<%=product.getSupplier()%>" placeholder="Nhập tên nhà cung cấp"/>
             </div>
             
             <div class="form-item">
                 <label class="form-label" for="price">Giá bán</label>
-                <input class="form-input" id="price" name="price" type="text" value="<%=request.getAttribute("price")%>" placeholder="Nhập giá bán"/>
+                <input class="form-input" id="price" name="price" type="text" value="<%=product.getPrice()%>" placeholder="Nhập giá bán"/>
             </div>
             
             <div class="form-item">
-                <label class="form-label" for="quantity">Số lượng</label>
-                <input class="form-input" id="quantity" name="quantity" type="text" value="<%=request.getAttribute("quantity")%>" placeholder="Nhập số lượng"/>
+                <label class="form-label" for="quantity_sold">Đã bán</label>
+                <input class="form-input" id="quantity_sold" name="quantity_sold" type="number" value="<%=product.getQuantity_sold()%>" readonly/>
+            </div>
+            
+            <div class="form-item">
+                <label class="form-label" for="quantity_remain">Còn lại</label>
+                <input class="form-input" id="quantity_remain" name="quantity_remain" type="number" value="<%=product.getQuantity_remain()%>" placeholder="Nhập số lượng còn lại"/>
             </div>
             
             <div class="form-item2">
                 <label class="form-label" for="des">Mô tả</label>
-                <textarea class="form-textarea form-input" id="des" name="des" type="text" placeholder="Nhập mô tả"><%=request.getAttribute("des")%></textarea>
+                <textarea class="form-textarea form-input" id="des" name="des" type="text" placeholder="Nhập mô tả"><%=product.getDes()%></textarea>
             </div>
         </div>
     </div>

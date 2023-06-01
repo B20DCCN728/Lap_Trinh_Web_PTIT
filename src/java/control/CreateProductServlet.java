@@ -33,11 +33,13 @@ public class CreateProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String supplier = request.getParameter("supplier");
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String des = request.getParameter("des");
         ProductDAO dao = new ProductDAO();
-        dao.createProducts(name, price, quantity, des);
+        dao.createProducts(name, image, supplier, price, quantity, des);
         List<Product> list_Product = dao.getProducts();
         request.setAttribute("list_Product", list_Product);
         request.getRequestDispatcher("product_list.jsp").forward(request, response);

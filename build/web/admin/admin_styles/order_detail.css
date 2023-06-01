@@ -48,18 +48,13 @@
 .item-content {
     font-weight: 400;
     font-size: 1rem;
-    margin-left: 10%;
+    margin-left: 15%;
     line-height: 3rem;
     align-self: center;
     position: absolute;
 }
 .item-content2 {
-    font-weight: 400;
-    font-size: 1rem;
-    margin-left: 15%;
-    line-height: 3rem;
-    align-self: center;
-    position: absolute;
+    margin-left: 8%;
 }
 #order-info {
     width: 99%;
@@ -72,18 +67,12 @@
     text-align: left;
 }
 .info-item2 {
-    width: 30%;
+    width: 35%;
     margin-right: 2%;
     height: 40px;
     display: block;
     float: left;
     border-bottom: solid 1px #bbb;
-}
-.info-item3 {
-    width: 35%;
-}
-.info-item4 {
-    width: 20%;
 }
 #product-info {
     width: 99%;
@@ -134,6 +123,17 @@ table#table-product td {
     float: left;
     text-align: left;
 }
-#payment_heading {
+#other-info {
+    width: 99%;
+    margin-right: 1%;
+    padding: 1% 2%;
+    background: #fff;
+    border: solid 1px #bbb;
+    display: block;
+    float: left;
     text-align: left;
+}
+.heading2 {
+    text-align: left;
+    margin: 1% 0;
 }

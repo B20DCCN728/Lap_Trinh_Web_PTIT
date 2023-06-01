@@ -139,12 +139,14 @@
                         <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th class="table-header col1">ID</th>
-                                    <th class="table-header col2">Họ</th>
-                                    <th class="table-header col2">Tên</th>
-                                    <th class="table-header col2">Ngày sinh</th>
-                                    <th class="table-header col2">Số đơn hàng</th>
-                                    <th class="table-header col1">Số sản phẩm</th>
+                                    <th class="table-header col0">ID</th>
+                                    <th class="table-header col1">Họ</th>
+                                    <th class="table-header col0">Tên</th>
+                                    <th class="table-header col1">Ngày sinh</th>
+                                    <th class="table-header col1">SÐT</th>
+                                    <th class="table-header col3">Email</th>
+                                    <th class="table-header col4">Địa chỉ</th>
+                                    <th class="table-header col1">Số đơn hàng</th>
                                     <th class="table-header col1">Tổng giá trị</th>
                                 </tr>
                             </thead>
@@ -166,21 +168,22 @@
                                 for(Order o : list_Order){
                                     if(o.getUser_id()==i.getId()){
                                         num_order++;
-                                        num_product+= o.getQuantity();
                                         total_cost+= o.getTotal();
                                     }
                                 }
                         %>
                                 <tr>
                                     <td class="center col0"><a href="user-detail?id=<%=id%>">#<%=id%></a></td>
-                                    <td class="center col2"><%=fname%></td>
-                                    <td class="center col1"><%=lname%></td>
-                                    <td class="left col2"><%=i.getDob()%></td>
-                                    <td class="left col2"><%=num_order%></td>
-                                    <td class="right col2"><%=num_product%></td>
-                                    <td class="right col5"><%=total_cost%></td>
+                                    <td class="left col1"><%=fname%></td>
+                                    <td class="center col0"><%=lname%></td>
+                                    <td class="center col1"><%=i.getDob()%></td>
+                                    <td class="center col1"><%=i.getPhone()%></td>
+                                    <td class="left col3"><%=i.getEmail()%></td>
+                                    <td class="left col4"><%=i.getAddress()%></td>
+                                    <td class="center col1"><%=num_order%></td>
+                                    <td class="right col1"><%=total_cost%></td>
                                 </tr>
-                         <%
+                        <%
                             }
                         %>
                             </tbody>

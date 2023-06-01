@@ -144,13 +144,23 @@
             </div>
             
             <div class="form-item">
+                <label class="form-label" for="image">Hình ảnh</label>
+                <input class="form-input" id="image" name="image" type="text" placeholder="Nhập đường dẫn URL"/>
+            </div>
+            
+            <div class="form-item">
+                <label class="form-label" for="supplier">Nhà cung cấp</label>
+                <input class="form-input" id="supplier" name="supplier" type="text" placeholder="Nhập tên nhà cung cấp"/>
+            </div>
+            
+            <div class="form-item">
                 <label class="form-label" for="price">Giá bán</label>
-                <input class="form-input" id="price" name="price" type="text"  placeholder="Nhập giá bán"/>
+                <input class="form-input" id="price" name="price" type="text" placeholder="Nhập giá bán"/>
             </div>
             
             <div class="form-item">
                 <label class="form-label" for="quantity">Số lượng</label>
-                <input class="form-input" id="quantity" name="quantity" type="text" placeholder="Nhập số lượng"/>
+                <input class="form-input" id="quantity" name="quantity" type="number" placeholder="Nhập số lượng"/>
             </div>
             
             <div class="form-item2">

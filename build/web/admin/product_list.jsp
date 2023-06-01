@@ -145,15 +145,13 @@
                             <thead>
                                 <tr>
                                     <th id="idleft" class="table-header col1" >Mã SP</th>
-                                    <th class="table-header col2">Tên SP</th>
+                                    <th class="table-header col3">Tên SP</th>
                                     <th class="table-header col2">Ảnh</th>
+                                    <th class="table-header col3">Nhà cung cấp</th>
                                     <th class="table-header col2">Giá</th>
-                                    <th class="table-header col2">Số lượng</th>
-                                    <th class="table-header col1"></th>
-                                    <th class="table-header col1"></th>
-                                    <th class="table-header col1"></th>
-                                    <th class="table-header col3"></th>
-                                    <th class="table-header col2"></th>
+                                    <th class="table-header col2">Đã bán</th>
+                                    <th class="table-header col2">Còn lại</th>
+                                    <th class="table-header col2">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -164,16 +162,14 @@
                                 int id = 10000 + i.getId();
                         %>
                                 <tr onclick="insert(<%=i.getId()%>)">
-                                    <td class="center col0"><a href="product-detail?id=<%=id%>">#<%=id%></a></td>
-                                    <td class="center col2"><%=i.getName()%></td>
-                                    <td class="center col1"><img src="<%=i.getImage()%>" style="height: 30px; width: auto;"/></td>
-                                    <td class="left col2"><%=i.getPrice()%></td>
-                                    <td class="left col2"><%=i.getQuantity_remain()%></td>
-                                    <td class="right col2"></td>
-                                    <td class="right col5"></td>
-                                    <td class="right col3"></td>
-                                    <td class="right col4"></td>
-                                    <td class="left col4"><a class="form-button" id="button-delete" href="delete-product?id=<%=id%>">Xoá</a></td>
+                                    <td class="center col1"><a href="product-detail?id=<%=id%>">#<%=id%></a></td>
+                                    <td class="left col3"><%=i.getName()%></td>
+                                    <td class="center col2"><img src="<%=i.getImage()%>" style="height: 30px; width: auto;"/></td>
+                                    <td class="left col3"><%=i.getSupplier()%></td>
+                                    <td class="center col2"><%=i.getPrice()%></td>
+                                    <td class="center col2"><%=i.getQuantity_sold()%></td>
+                                    <td class="center col2"><%=i.getQuantity_remain()%></td>
+                                    <td class="center col2"><a class="form-button" id="button-delete" href="delete-product?id=<%=id%>">Xoá</a></td>
                                 </tr>
                          <%
                             }

@@ -4,16 +4,16 @@ public class Order {
     private int id;
     private String create_date;
     private int user_id, cost, discount, fee, total;
-    private String delivery, payment, note;
+    private String payment, delivery, note;
 
-    public Order(int id, String create_date, int user_id, int cost, int discount, int fee, int total, String delivery, String payment, String note) {
+    public Order(int id, String create_date, int user_id, int cost, int discount, int fee, String payment, String delivery, String note) {
         this.id = id;
         this.create_date = create_date;
         this.user_id = user_id;
         this.cost = cost;
         this.discount = discount;
         this.fee = fee;
-        this.total = total;
+        this.total = cost - discount + fee;
         this.delivery = delivery;
         this.payment = payment;
         this.note = note;

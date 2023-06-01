@@ -38,13 +38,10 @@ public class ProductDetailServlet extends HttpServlet {
         List<Product> list_Product = dao.getProducts();
         for(Product i : list_Product){
             if(i.getId()==id-10000){
-                request.setAttribute("name", i.getName());
-                request.setAttribute("price", i.getPrice());
-                request.setAttribute("quantity", i.getQuantity_remain());
-                request.setAttribute("des", i.getDes());
+                request.setAttribute("Product", i);
+                break;
             }
         }
-        request.setAttribute("id", id); 
         request.getRequestDispatcher("product_detail.jsp").forward(request, response);
     }
 

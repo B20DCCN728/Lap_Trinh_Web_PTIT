@@ -27,7 +27,6 @@ public class OrderDAO {
                         rs.getInt(4),
                         rs.getInt(5),
                         rs.getInt(6),
-                        rs.getInt(7),
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10)
@@ -36,5 +35,23 @@ public class OrderDAO {
         } catch (Exception e) {
         } 
         return list_Order;
+    }
+        public void createOrder(String create_date, int user_id, int cost, int discount, int fee, int total, String des){
+        List<Order> list_Order = new ArrayList<>();
+        String query = "INSERT INTO Orders (create_date, user_id, cost, discount, fee, total, delivery, payment, des)  VALUES (?,?,?,?,?,?, 'Đang chuẩn bị hàng', 'Chưa thanh toán', ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, create_date);
+            ps.setInt(2, user_id);
+            ps.setInt(3, cost);
+            ps.setInt(4, discount);
+            ps.setInt(5, fee);
+            ps.setInt(6, total);
+            ps.setString(7, des);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        } 
     }
 }

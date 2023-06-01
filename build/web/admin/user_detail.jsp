@@ -179,54 +179,47 @@
                                 <tr>
                                     <th class="table-header col1">Mã đơn</th>
                                     <th class="table-header col2">Ngày đặt hàng</th>
-                                    <th class="table-header col3">Sản phẩm</th>
-                                    <th class="table-header col1">Số lượng</th>
-                                    <th class="table-header col1">Đơn Giá</th>
-                                    <th class="table-header col1">Khuyến Mãi</th>
+                                    <th class="table-header col2">Tổng tiền hàng</th>
+                                    <th class="table-header col1">Khuyến mãi</th>
+                                    <th class="table-header col2">Phí vận chuyển</th>
                                     <th class="table-header col3">Tổng Thanh Toán</th>
+                                    <th class="table-header col3">Giao hàng</th>
+                                    <th class="table-header col3">Thanh toán</th>
                                     <th class="table-header col2">Ghi Chú</th>
                                 </tr>
                             </thead>
-                           <tbody>
+                            <tbody>
                         <%
                             List<Order> list_Order = (List<Order>)request.getAttribute("list_Order");
-                            List<Product> list_Product = (List<Product>)request.getAttribute("list_Product");
-                            String pname = "";
-                            int tt_Quantity = 0, tt_Total = 0;
+                            int tt_Total = 0, j;
                             for(Order i:list_Order){
                                 int id = 1000000 + i.getId();
-                                tt_Quantity+= i.getQuantity();
                                 tt_Total+= i.getTotal();
-                                for(Product p : list_Product){
-                                    if(p.getId()==i.getProduct_id()){
-                                        pname = p.getName();
-                                    }
-                                }
-                                
-                                
                         %>
-                                <tr class="order-row">
+                                <tr onclick="insert(<%=i.getId()%>)">
                                     <td class="center col1"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
                                     <td class="center col2"><%=i.getCreate_date()%></td>
-                                    <td class="center col3"><%=pname%></td>
-                                    <td class="center col1"><%=i.getQuantity()%></td>
-                                    <td class="center col1"><%=i.getPrice()%></td>
+                                    <td class="center col2"><%=i.getCost()%></td>
                                     <td class="center col1"><%=i.getDiscount()%></td>
-                                    <td class="center col3"><%=i.getTotal()%></td>
-                                    <td class="center col2"><%=(i.getNote() == null) ? "--Trống--" : i.getNote()%></td>
+                                    <td class="center col2"><%=i.getFee()%></td>
+                                    <td class="right col3"><%=i.getTotal()%></td>
+                                    <td class="center col3"><%=i.getDelivery()%></td>
+                                    <td class="center col3"><%=i.getPayment()%></td>
+                                    <td class="left col4"><%=(i.getNote()==null) ? "--Trống--" : i.getNote()%></td>
                                 </tr>
                          <%
                             }
                         %>
                                 <tr class="total-row order-row">
-                                    <td class="center col1">Tổng</td>
+                                    <td class="center col1"></td>
+                                    <td class="center col2">Tổng</td>
                                     <td class="center col2"></td>
+                                    <td class="center col1"></td>
+                                    <td class="center col2"></td>
+                                    <td class="right col3"><%=tt_Total%></td>
                                     <td class="center col3"></td>
-                                    <td class="center col1"><%=tt_Quantity%></td>
-                                    <td class="center col1"></td>
-                                    <td class="center col1"></td>
-                                    <td class="center col3"><%=tt_Total%></td>
-                                    <td class="center col2"></td>
+                                    <td class="center col3"></td>
+                                    <td class="center col4"></td>
                                 </tr>
                             </tbody>
                         </table>

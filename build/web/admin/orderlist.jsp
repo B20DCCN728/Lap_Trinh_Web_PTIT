@@ -140,7 +140,7 @@
                                     <th class="table-header col2">Ngày đặt hàng</th>
                                     <th class="table-header col2">Khách hàng</th>
                                     <th class="table-header col2">Tổng tiền hàng</th>
-                                    <th class="table-header col1">Khuyến Mãi</th>
+                                    <th class="table-header col1">Khuyến mãi</th>
                                     <th class="table-header col2">Phí vận chuyển</th>
                                     <th class="table-header col3">Tổng Thanh Toán</th>
                                     <th class="table-header col3">Giao hàng</th>
@@ -161,11 +161,11 @@
                                     <td class="center col2"><%=i.getUser_id()%></td>
                                     <td class="center col2"><%=i.getCost()%></td>
                                     <td class="center col1"><%=i.getDiscount()%></td>
-                                    <td class="right col2"><%=i.getFee()%></td>
+                                    <td class="center col2"><%=i.getFee()%></td>
                                     <td class="right col3"><%=i.getTotal()%></td>
-                                    <td class="right col3"><%=i.getDelivery()%></td>
-                                    <td class="right col3"><%=i.getPayment()%></td>
-                                    <td class="left col4"><%=i.getNote()%></td>
+                                    <td class="center col3"><%=i.getDelivery()%></td>
+                                    <td class="center col3"><%=i.getPayment()%></td>
+                                    <td class="left col4"><%=(i.getNote()==null) ? "--Trống--" : i.getNote()%></td>
                                 </tr>
                          <%
                             }
