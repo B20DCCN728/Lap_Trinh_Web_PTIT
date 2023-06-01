@@ -6,8 +6,8 @@
 package control;
 
 import context.OrderDAO;
-import context.OrderItemDAO;
 import context.ProductDAO;
+import context.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,16 +15,18 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import model.Order;
 import model.Product;
+import model.User;
 
 /**
  *
  * @author havanthiep
  */
-@WebServlet(name="OrderDetailServlet", urlPatterns={"/admin/orderdetail"})
-public class OrderDetailServlet extends HttpServlet {
+@WebServlet(name="UserDetailServlet", urlPatterns={"/admin/user-detail"})
+public class UserDetailServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,20 +39,33 @@ public class OrderDetailServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
-        ProductDAO pdao = new ProductDAO();
-        OrderItemDAO oidao = new OrderItemDAO();
-        OrderDAO odao = new OrderDAO();
-        List<Product> list_Product = pdao.getProducts();
-        List<Order> list_Order = odao.getOrders();
+        OrderDAO dao = new OrderDAO();
+        List<Order> list_Order = dao.getOrders();
+        List<Order> list_Order_User = new ArrayList<>();
         for(Order i : list_Order){
+            if(i.getUser_id()==id-1000000){
+                list_Order_User.add(i);
+            }
+        }
+        request.setAttribute("list_Order", list_Order_User);
+        ProductDAO pdao = new ProductDAO();
+        List<Product> list_Product = pdao.getProducts();
+        request.setAttribute("list_Product", list_Product);
+        UserDAO udao = new UserDAO();
+        List<User> list_User = udao.getUsers();
+        for(User i : list_User){
             if(i.getId()==id-1000000){
-                request.setAttribute("Order", i);
-                request.setAttribute("list_OrderItem", oidao.getOrderItems(i.getId()));
-                request.setAttribute("list_Product", list_Product); 
+                request.setAttribute("email", i.getEmail());
+                request.setAttribute("fullname", i.getFullname());
+                request.setAttribute("dob", i.getDob());
+                request.setAttribute("phone", i.getPhone());
+                request.setAttribute("address", i.getAddress());
+                request.setAttribute("note", i.getNote());
                 break;
             }
         }
-        request.getRequestDispatcher("order_detail.jsp").forward(request, response);
+        request.setAttribute("id", id);
+        request.getRequestDispatcher("user_detail.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

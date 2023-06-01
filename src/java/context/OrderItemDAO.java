@@ -5,36 +5,31 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.Order;
+import model.OrderItem;
 
-public class OrderDAO {
+public class OrderItemDAO {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
     
-    public List<Order> getOrders(){
-        List<Order> list_Order = new ArrayList<>();
-        String query = "SELECT * FROM Orders";
+    public List<OrderItem> getOrderItems(int Id){
+        List<OrderItem> list_OrderItem = new ArrayList<>();
+        String query = "SELECT * FROM OrderItems WHERE order_id=?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
+            ps.setInt(1, Id);
             rs = ps.executeQuery();
             while(rs.next()){
-                list_Order.add(new Order(
+                list_OrderItem.add(new OrderItem(
                         rs.getInt(1),
-                        rs.getString(2),
+                        rs.getInt(2),
                         rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
-                        rs.getString(9),
-                        rs.getString(10)
+                        rs.getInt(4)
                 ));
             }
         } catch (Exception e) {
         } 
-        return list_Order;
+        return list_OrderItem;
     }
 }

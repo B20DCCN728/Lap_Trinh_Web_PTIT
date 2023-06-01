@@ -1,5 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="model.Order"%>
+<%@page import="model.OrderItem"%>
+<%@page import="model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -176,16 +178,19 @@
         </div>
         <div id="order-info" class="main-block">
                 <div class="info-item2">
+                    <% 
+                        Order order = (Order) request.getAttribute("Order"); 
+                    %>
                     <label class="item-label" for="hoten">Mã đơn hàng:</label>
-                    <div class="item-content" id="hoten" name="hoten" >#<%=request.getAttribute("id")%></div>
+                    <div class="item-content" id="hoten" name="hoten" >#<%=1000000+order.getId()%></div>
                 </div>
                 <div class="info-item2">
                     <label class="item-label" for="hoten">Trạng thái giao hàng:</label>
-                    <div class="item-content" id="hoten" name="hoten" >${email}</div>
+                    <div class="item-content" id="hoten" name="hoten" ><%=order.getDelivery()%></div>
                 </div>
                 <div class="info-item2">
                     <label class="item-label" for="hoten">Trạng thái COD:</label>
-                    <div class="item-content" id="hoten" name="hoten" >${email}</div>
+                    <div class="item-content" id="hoten" name="hoten" ></div>
                 </div>
         </div>
                 
@@ -196,6 +201,7 @@
                         <table id="table-product" cellpadding="3" cellspacing="0" border="0">
                             <thead>
                                 <tr>
+                                    <th class="table-header col1">ID</th>
                                     <th class="table-header col5">Sản phẩm</th>
                                     <th class="table-header col4">Hình ảnh</th>
                                     <th class="table-header col1">Số lượng</th>
@@ -204,40 +210,59 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr id="product-row">
-                                    <td class="col5"><%=request.getAttribute("pname")%></td>
-                                    <td class="col4"><img src="<%=request.getAttribute("image")%>" style="height: 20px; width: auto;"/></td>
-                                    <td class="col1"><%=request.getAttribute("quantity")%></td>
-                                    <td class="center col2"><%=request.getAttribute("price")%> ₫</td>
-                                    <td class="right col2"><%=request.getAttribute("cost")%> ₫</td>
-                                </tr>
+                                
+                            <%
+                                List<OrderItem> list_OrderItem = (List<OrderItem>)request.getAttribute("list_OrderItem");
+                                List<Product> list_Product = (List<Product>)request.getAttribute("list_Product");
+                                for(OrderItem i:list_OrderItem){
+                                    for(Product p:list_Product){
+                                        if(p.getId()==i.getProduct_id()){
+                            %>
+                                            <tr id="product-row">
+                                                <th class="col1">#<%=10000+p.getId()%></th>
+                                                <td class="col5"><%=p.getName()%></td>
+                                                <td class="col4"><img src="<%=p.getImage()%>" style="height: 20px; width: auto;"/></td>
+                                                <td class="col1"><%=i.getQuantity()%></td>
+                                                <td class="center col2"><%=p.getPrice()%> ₫</td>
+                                                <td class="right col2"><%=i.getQuantity()*p.getPrice()%> ₫</td>
+                                            </tr>
+                            <%
+                                        }
+                                    }
+                                }
+                            %>
+                                
                                 <tr>
+                                    <td class="col1"></td>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
-                                    <td class="left col2">Tổng giá trị sản phẩm:</td>
-                                    <td class="right col2"><%=request.getAttribute("cost")%> ₫</td>
+                                    <td class="left col2">Tổng tiền hàng:</td>
+                                    <td class="right col2"><%=order.getCost()%> ₫</td>
                                 </tr>
                                 <tr>
+                                    <td class="col1"></td>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Khuyến mãi:</td>
-                                    <td class="right col2"><%=request.getAttribute("discount")%> ₫</td>
+                                    <td class="right col2"><%=order.getDiscount()%> ₫</td>
                                 </tr>
                                 <tr>
+                                    <td class="col1"></td>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Phí vận chuyển:</td>
-                                    <td class="right col2">20000 ₫</td>
+                                    <td class="right col2"><%=order.getFee()%> ₫</td>
                                 </tr>
                                 <tr id="order-total">
+                                    <td class="col1"></td>
                                     <td class="col5"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Tổng thanh toán:</td>
-                                    <td class="right col2"><%=request.getAttribute("total")%> ₫</td>
+                                    <td class="right col2"><%=order.getTotal()%> ₫</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -253,11 +278,11 @@
                 </div>
                 <div class="info-item3 info-item2">
                     <label class="item-label" for="hoten">Trạng thái thanh toán:</label>
-                    <div class="item-content2" id="hoten" name="hoten" >Ðã thanh toán</div>
+                    <div class="item-content2" id="hoten" name="hoten" ><%=order.getPayment()%></div>
                 </div>
                 <div class="info-item4 info-item2 ">
                     <label class="item-label" for="hoten">Thanh toán COD:</label>
-                    <div class="item-content" id="hoten" name="hoten" >0 ₫</div>
+                    <div class="item-content" id="hoten" name="hoten" > ₫</div>
                 </div>
         </div>
     </div>

@@ -131,22 +131,20 @@
 </aside>
 <div id="right-panel">
                 <div id="block-table" class="main-block">
-                                        
-<!--                    <h2 class="heading"> Bảng thông tin </h2>-->
                     
                     <div id="box">
                         <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th id="idleft" class="table-header col1" >Mã đơn</th>
+                                    <th class="table-header col1">Mã đơn</th>
                                     <th class="table-header col2">Ngày đặt hàng</th>
-                                    <th class="table-header col2">Ngày nhận hàng</th>
                                     <th class="table-header col2">Khách hàng</th>
-                                    <th class="table-header col2">Sản phẩm</th>
-                                    <th class="table-header col1">Số lượng</th>
-                                    <th class="table-header col1">Đơn Giá</th>
+                                    <th class="table-header col2">Tổng tiền hàng</th>
                                     <th class="table-header col1">Khuyến Mãi</th>
+                                    <th class="table-header col2">Phí vận chuyển</th>
                                     <th class="table-header col3">Tổng Thanh Toán</th>
+                                    <th class="table-header col3">Giao hàng</th>
+                                    <th class="table-header col3">Thanh toán</th>
                                     <th class="table-header col2">Ghi Chú</th>
                                 </tr>
                             </thead>
@@ -158,15 +156,15 @@
                                 int id = 1000000 + i.getId();
                         %>
                                 <tr onclick="insert(<%=i.getId()%>)">
-                                    <td class="center col0"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
+                                    <td class="center col1"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
                                     <td class="center col2"><%=i.getCreate_date()%></td>
-                                    <td class="center col1"><%=i.getComplete_date()%></td>
-                                    <td class="left col2"><%=i.getUser_id()%></td>
-                                    <td class="left col2"><%=i.getProduct_id()%></td>
-                                    <td class="right col2"><%=i.getQuantity()%></td>
-                                    <td class="right col5"><%=i.getPrice()%></td>
-                                    <td class="right col3"><%=i.getDiscount()%></td>
-                                    <td class="right col4"><%=i.getTotal()%></td>
+                                    <td class="center col2"><%=i.getUser_id()%></td>
+                                    <td class="center col2"><%=i.getCost()%></td>
+                                    <td class="center col1"><%=i.getDiscount()%></td>
+                                    <td class="right col2"><%=i.getFee()%></td>
+                                    <td class="right col3"><%=i.getTotal()%></td>
+                                    <td class="right col3"><%=i.getDelivery()%></td>
+                                    <td class="right col3"><%=i.getPayment()%></td>
                                     <td class="left col4"><%=i.getNote()%></td>
                                 </tr>
                          <%

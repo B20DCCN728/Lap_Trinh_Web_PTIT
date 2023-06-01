@@ -1,14 +1,12 @@
---tblOrders--
 CREATE TABLE Orders (
-	id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	create_date DATE NOT NULL,
-	user_id INT NOT NULL,
-	product_id INT NOT NULL,
-	delivery NVARCHAR(100) NOT NULL,
-	quantity INT NOT NULL,
-	price INT NOT NULL,
+	id INT PRIMARY KEY IDENTITY(1,1),
+	create_date VARCHAR(100),
+	user_id INT,
+	cost INT,
 	discount INT,
-	total INT NOT NULL,
-	payment NVARCHAR(100) NOT NULL,
+	fee INT,
+	total INT,
+	payment NVARCHAR(100),
+	delivery NVARCHAR(100),
 	note NVARCHAR(max)
 );
