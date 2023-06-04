@@ -162,6 +162,11 @@
                                         break;
                                     }
                                 }
+                                String color1 = "red", color2 = "red";
+                                if(i.getDelivery().equals("Đã đóng gói")) color1 = "orange";
+                                else if(i.getDelivery().equals("Đang giao hàng")) color1 = "yellow";
+                                else if(i.getDelivery().equals("Đã giao hàng")) color1 = "green";
+                                if(i.getPayment().equals("Đã thanh toán")) color2 = "green";
                         %>
                                 <tr onclick="insert(<%=i.getId()%>)">
                                     <td class="center col1"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
@@ -171,10 +176,11 @@
                                     <td class="center col1"><%=i.getDiscount()%></td>
                                     <td class="center col2"><%=i.getFee()%></td>
                                     <td class="center col2"><%=i.getTotal()%></td>
-                                    <td class="center col2"><%=i.getDelivery()%></td>
-                                    <td class="center col2"><%=i.getPayment()%></td>
+                                    <td class="center col2"><div class="item-cell" style="border-radius: 6px; padding: 5px; font-weight: 600; opacity: 80%; background: <%=color1%>;"><%=i.getDelivery()%></div></td>
+                                    <td class="center col2"><div class="item-cell" style="border-radius: 6px; padding: 5px; font-weight: 600; opacity: 80%; background: <%=color2%>;"><%=i.getPayment()%></div></td>
                                     <td class="left col4"><%=(i.getNote()==null) ? "--Trống--" : i.getNote()%></td>
                                 </tr>
+
                          <%
                             }
                         %>

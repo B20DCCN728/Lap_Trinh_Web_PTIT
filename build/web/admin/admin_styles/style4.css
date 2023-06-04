@@ -252,3 +252,6 @@ th.desc::after {
     white-space: nowrap;
     overflow: hidden;
 }
+.item-cell {
+    color: #fff;
+}
