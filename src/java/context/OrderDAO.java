@@ -36,8 +36,7 @@ public class OrderDAO {
         } 
         return list_Order;
     }
-        public void createOrder(String create_date, int user_id, int cost, int discount, int fee, int total, String des){
-        List<Order> list_Order = new ArrayList<>();
+    public void createOrder(String create_date, int user_id, int cost, int discount, int fee, int total, String des){
         String query = "INSERT INTO Orders (create_date, user_id, cost, discount, fee, total, delivery, payment, des)  VALUES (?,?,?,?,?,?, 'Chờ xác nhận', 'Chưa thanh toán', ?";
         try {
             conn = new DBContext().getConnection();
@@ -51,6 +50,18 @@ public class OrderDAO {
             ps.setString(7, des);
             ps.executeUpdate();
             
+        } catch (Exception e) {
+        } 
+    }
+    public void updateOrder(String delivery, String payment, int id){
+        String query = "UPDATE Orders set delivery=?, payment=? WHERE id=? ";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, delivery);
+            ps.setString(2, payment);
+            ps.setInt(3, id);
+            ps.executeUpdate();
         } catch (Exception e) {
         } 
     }

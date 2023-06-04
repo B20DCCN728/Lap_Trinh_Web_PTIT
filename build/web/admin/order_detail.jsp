@@ -138,7 +138,13 @@
         Order order = (Order) request.getAttribute("Order");
         User user = (User) request.getAttribute("User");
     %>
-    <h1 id="head">Đơn hàng #<%=1000000+order.getId()%></h1>
+    <form method="post" id="top">
+        <h1 id="head">Đơn hàng #<%=1000000+order.getId()%></h1>
+        <button class="form-button" id="button-save" type="submit" formaction="update-order-detail">Lưu</button>
+        <input type="text" id="orderid" name="orderid" value="<%=order.getId()%>" hidden="true"/>
+        <input type="text" id="payment-input" name="payment-input" value="<%=order.getPayment()%>" hidden="true"/>
+        <input type="text" id="delivery-input" name="delivery-input" value="<%=order.getDelivery()%>" hidden="true"/>
+    </form>
     <div id="content">
         <div id="client-info" class="main-block">
             <div id="user-info" class="block-info">
@@ -175,6 +181,7 @@
         </div>
                 
         <div id="product-info" class="main-block">
+                <h2 class="block-heading">Danh sách sản phẩm</h2>
                 <div id="block-table" class="main-block">
                     
                     <div id="box-product">
@@ -266,11 +273,12 @@
                 <div class="info-item2">
                     <label class="item-label" for="delivery-status">Trạng thái giao hàng:</label>
                     <div class="item-content2 item-content" id="delivery-status" name="delivery-status" ><%=order.getDelivery()%></div>
+                    
                 </div>
-                <button class="form-button" id="button-update">Cập nhật</button>
+                <button class="form-button" id="button-update1">Cập nhật</button>
                 <div id="delivery-menu" class="delivery-menu hidden">
                     <div class="delivery-item">
-                        <input type="checkbox" id="checkbox1" name="checkbox1" class="delivery-checkbox" value="1" checked>
+                        <input type="checkbox" id="checkbox1" name="checkbox1" class="delivery-checkbox" value="1" checked disabled>
                         <label class="delivery-label" for="checkbox1">Chờ xác nhận</label>
                     </div>
                     <div class="delivery-item">
@@ -287,7 +295,7 @@
                     </div>
                 </div>
                 <script>
-                    const updateButton = document.getElementById('button-update');
+                    const updateButton = document.getElementById('button-update1');
                     const deliveryMenu = document.querySelector('.delivery-menu');
 
                     updateButton.addEventListener('click', () => {
@@ -295,21 +303,43 @@
                       if (deliveryMenu.classList.contains('hidden')) {
                         updateButton.textContent = 'Cập nhật';
                       } else {
-                        updateButton.textContent = 'Lưu';
+                        updateButton.textContent = 'Hoàn tất';
                       }
                     });
                     const checkboxes = document.querySelectorAll('.delivery-checkbox');
                     const deliverylabels = document.querySelectorAll('.delivery-label');
+                    const delivery_status = document.getElementById('delivery-status').textContent;
+                    
+                    let isDeliveryFound = false;
+
+                    checkboxes.forEach((checkbox, index) => {
+                      if (!isDeliveryFound) {
+                        if (deliverylabels[index].textContent === delivery_status) {
+                          isDeliveryFound = true;
+                        }
+                        checkbox.checked = true;
+                        if(!isDeliveryFound) checkbox.disabled = true;
+                      } else {
+                        checkbox.checked = false;
+                        checkbox.disabled = false;
+                      }
+                    });
 
                     checkboxes.forEach((checkbox, index) => {
                       checkbox.addEventListener('change', () => {
                         if (checkbox.checked) {
+                            document.getElementById('delivery-status').innerHTML = deliverylabels[index].textContent;
+                            document.getElementById('delivery-input').value = deliverylabels[index].textContent;
                           for (let i = 0; i < index; i++) {
                             checkboxes[i].checked = true;
+                            checkboxes[i].disabled = true;
                             deliverylabels[i].checked = true;
                           }
                         }
                         else {
+                            document.getElementById('delivery-status').innerHTML = deliverylabels[index-1].textContent;
+                            document.getElementById('delivery-input').value = deliverylabels[index-1].textContent;
+                            if(index>1) checkboxes[index-1].disabled = false;
                           for (let i = index + 1; i < checkboxes.length; i++) {
                             checkboxes[i].checked = false;
                           }
@@ -325,10 +355,74 @@
                     <label class="item-label" for="payment-type">Hình thức thanh toán:</label>
                     <div class="item-content2 item-content" id="payment-type" name="payment-type" >Thanh toán khi nhận hàng</div>
                 </div>
+                <button class="form-button" id="button-update2">Cập nhật</button>
                 <div class="info-item2">
                     <label class="item-label" for="payment-status">Trạng thái thanh toán:</label>
                     <div class="item-content2 item-content" id="payment-status" name="payment-status" ><%=order.getPayment()%></div>
                 </div>
+                <div id="payment-menu" class="payment-menu hidden">
+                    <div class="payment-item">
+                        <input type="checkbox" id="checkbox5" name="checkbox5" class="payment-checkbox" value="1" checked disabled>
+                        <label class="payment-label" for="checkbox5">Chưa thanh toán</label>
+                    </div>
+                    <div class="payment-item">
+                        <input type="checkbox" id="checkbox6" name="checkbox6" class="payment-checkbox" value="2">
+                        <label class="payment-label" for="checkbox6">Đã thanh toán</label>
+                    </div>
+                </div>
+                <script>
+                    const updateButton2 = document.getElementById('button-update2');
+                    const paymentMenu = document.querySelector('.payment-menu');
+
+                    updateButton2.addEventListener('click', () => {
+                    paymentMenu.classList.toggle('hidden');
+                      if (paymentMenu.classList.contains('hidden')) {
+                        updateButton2.textContent = 'Cập nhật';
+                      } else {
+                        updateButton2.textContent = 'Hoàn tất';
+                      }
+                    });
+                    const checkboxes2 = document.querySelectorAll('.payment-checkbox');
+                    const paymentlabels = document.querySelectorAll('.payment-label');
+                    const payment_status = document.getElementById('payment-status').textContent;
+                    
+                    let isPaymentFound = false;
+
+                    checkboxes2.forEach((checkbox, index) => {
+                      if (!isPaymentFound) {
+                        if (paymentlabels[index].textContent === payment_status) {
+                          isPaymentFound = true;
+                        }
+                        checkbox.checked = true;
+                        if(!isPaymentFound) checkbox.disabled = true;
+                      } else {
+                        checkbox.checked = false;
+                        checkbox.disabled = false;
+                      }
+                    });
+
+                    checkboxes2.forEach((checkbox, index) => {
+                      checkbox.addEventListener('change', () => {
+                        if (checkbox.checked) {
+                            document.getElementById('payment-status').innerHTML = paymentlabels[index].textContent;
+                            document.getElementById('payment-input').value = paymentlabels[index].textContent;
+                          for (let i = 0; i < index; i++) {
+                            checkboxes2[i].checked = true;
+                            checkboxes2[i].disabled = true;
+                            paymentlabels[i].checked = true;
+                          }
+                        }
+                        else {
+                            document.getElementById('payment-status').innerHTML = paymentlabels[index-1].textContent;
+                            document.getElementById('payment-input').value = paymentlabels[index-1].textContent;
+                            if(index>1) checkboxes2[index-1].disabled = false;
+                          for (let i = index + 1; i < checkboxes2.length; i++) {
+                            checkboxes2[i].checked = false;
+                          }
+                        }
+                      });
+                    });
+                </script>
         </div>
     </div>
 </div>
