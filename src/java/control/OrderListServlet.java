@@ -6,6 +6,7 @@
 package control;
 
 import context.OrderDAO;
+import context.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Order;
+import model.User;
 
 /**
  *
@@ -33,8 +35,11 @@ public class OrderListServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         OrderDAO dao = new OrderDAO();
+        UserDAO udao = new UserDAO();
         List<Order> list_Order = dao.getOrders();
+        List<User> list_User = udao.getUsers();
         request.setAttribute("list_Order", list_Order);
+        request.setAttribute("list_User", list_User);
         request.getRequestDispatcher("orderlist.jsp").forward(request, response);
     } 
 

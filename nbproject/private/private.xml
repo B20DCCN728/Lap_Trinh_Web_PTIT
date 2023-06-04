@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/orderlist.jsp</file>
             <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/model/User.java</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/context/UserDAO.java</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/user_list.jsp</file>
-            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/control/UserListServlet.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/control/OrderDetailServlet.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/admin_scripts/admin.js</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/model/Product.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/admin_styles/order_detail.css</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/web/admin/order_detail.jsp</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/model/Order.java</file>
+            <file>file:/E:/Code/Code%20HTML/Phukien_Project/src/java/model/OrderItem.java</file>
         </group>
     </open-files>
 </project-private>

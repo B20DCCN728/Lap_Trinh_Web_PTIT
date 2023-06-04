@@ -146,9 +146,9 @@
                                 <tr>
                                     <th id="idleft" class="table-header col1" >Mã SP</th>
                                     <th class="table-header col3">Tên SP</th>
-                                    <th class="table-header col2">Ảnh</th>
+                                    <th class="table-header col2">Hình ảnh</th>
                                     <th class="table-header col3">Nhà cung cấp</th>
-                                    <th class="table-header col2">Giá</th>
+                                    <th class="table-header col2">Giá bán</th>
                                     <th class="table-header col2">Đã bán</th>
                                     <th class="table-header col2">Còn lại</th>
                                     <th class="table-header col2">Thao tác</th>

@@ -38,7 +38,7 @@ public class OrderDAO {
     }
         public void createOrder(String create_date, int user_id, int cost, int discount, int fee, int total, String des){
         List<Order> list_Order = new ArrayList<>();
-        String query = "INSERT INTO Orders (create_date, user_id, cost, discount, fee, total, delivery, payment, des)  VALUES (?,?,?,?,?,?, 'Đang chuẩn bị hàng', 'Chưa thanh toán', ?";
+        String query = "INSERT INTO Orders (create_date, user_id, cost, discount, fee, total, delivery, payment, des)  VALUES (?,?,?,?,?,?, 'Chờ xác nhận', 'Chưa thanh toán', ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

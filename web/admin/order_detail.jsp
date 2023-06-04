@@ -143,54 +143,35 @@
         <div id="client-info" class="main-block">
             <div id="user-info" class="block-info">
                 <h2 class="block-heading">Thông tin khách hàng</h2>
-                <div class="info-item">
-                    <label class="item-label" for="fullname">Họ và tên:</label>
-                    <div class="item-content" id="fullname" name="fullname"><%=user.getFullname()%></div>
+                <div id="block-left">
+                    <div class="info-item">
+                        <label class="item-label" for="fullname">Họ và tên:</label>
+                        <div class="item-content" id="fullname" name="fullname"><%=user.getFullname()%></div>
+                    </div>
+                    <div class="info-item">
+                        <label class="item-label" for="dob">Ngày sinh:</label>
+                        <div class="item-content" id="dob" name="dob"><%=user.getDob()%></div>
+                    </div>
+                    <div class="info-item">
+                        <label class="item-label" for="email">Email:</label>
+                        <div class="item-content" id="email" name="email"><%=user.getEmail()%></div>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <label class="item-label" for="email">Email:</label>
-                    <div class="item-content" id="email" name="email"><%=user.getEmail()%></div>
-                </div>
-                <div class="info-item">
-                    <label class="item-label" for="phone">SÐT:</label>
-                    <div class="item-content" id="phone" name="phone"><%=user.getPhone()%></div>
-                </div>
-                <div class="info-item">
-                    <label class="item-label" for="address">Địa chỉ:</label>
-                    <div class="item-content" id="address" name="address"><%=user.getAddress()%></div>
-                </div>
-            </div>
-            <div id="delivery-info" class="block-info">
-                <h2 class="block-heading">Thông tin giao hàng</h2>
-                <div class="info-item">
-                    <label class="item-label" for="fullname">Họ và tên:</label>
-                    <div class="item-content" id="fullname" name="fullname"><%=user.getFullname()%></div>
-                </div>
-                <div class="info-item">
-                    <label class="item-label" for="email">Email:</label>
-                    <div class="item-content" id="email" name="email"><%=user.getEmail()%></div>
-                </div>
-                <div class="info-item">
-                    <label class="item-label" for="phone">SÐT:</label>
-                    <div class="item-content" id="phone" name="phone"><%=user.getPhone()%></div>
-                </div>
-                <div class="info-item">
-                    <label class="item-label" for="address">Địa chỉ:</label>
-                    <div class="item-content" id="address" name="address"><%=user.getAddress()%></div>
+                <div id="block-right">
+                    <div class="info-item">
+                        <label class="item-label" for="phone">SÐT:</label>
+                        <div class="item-content" id="phone" name="phone"><%=user.getPhone()%></div>
+                    </div>
+                    <div class="info-item">
+                        <label class="item-label" for="address">Địa chỉ:</label>
+                        <div class="item-content" id="address" name="address"><%=user.getAddress()%></div>
+                    </div>
+                    <div class="info-item">
+                        <label class="item-label" for="note">Ghi chú:</label>
+                        <div class="item-content" id="note" name="note" ><%=(order.getNote()==null) ? "--Trống--" : order.getNote()%></div>
+                    </div>
                 </div>
             </div>
-            
-        </div>
-        <div id="order-info" class="main-block">
-            <h2 class="heading2 block-heading">Giao hàng</h2>
-                <div class="info-item2">
-                    <label class="item-label" for="hoten">Đơn vị vận chuyển:</label>
-                    <div class="item-content" id="hoten" name="hoten" >Ninja Van</div>
-                </div>
-                <div class="info-item2">
-                    <label class="item-label" for="hoten">Trạng thái giao hàng:</label>
-                    <div class="item-content" id="hoten" name="hoten" ><%=order.getDelivery()%></div>
-                </div>
         </div>
                 
         <div id="product-info" class="main-block">
@@ -203,9 +184,9 @@
                                     <th class="table-header col1">ID</th>
                                     <th class="table-header col5">Sản phẩm</th>
                                     <th class="table-header col4">Hình ảnh</th>
-                                    <th class="table-header col4">Nhà cung cấp</th>
+                                    <th class="table-header col3">Nhà cung cấp</th>
                                     <th class="table-header col1">Số lượng</th>
-                                    <th class="table-header col2">Đơn Giá</th>
+                                    <th class="table-header col3">Đơn Giá</th>
                                     <th class="table-header col2">Thành tiền</th>
                                 </tr>
                             </thead>
@@ -223,10 +204,10 @@
                                                 <th class="col1"><a href="product-detail?id=<%=id%>">#<%=id%></a></th>
                                                 <td class="left col5"><%=p.getName()%></td>
                                                 <td class="col4"><img src="<%=p.getImage()%>" style="height: 20px; width: auto;"/></td>
-                                                <td class="left col4"><%=p.getSupplier()%></td>
+                                                <td class="left col3"><%=p.getSupplier()%></td>
                                                 <td class="col1"><%=i.getQuantity()%></td>
-                                                <td class="center col2"><%=p.getPrice()%> ₫</td>
-                                                <td class="right col2"><%=i.getQuantity()*p.getPrice()%> ₫</td>
+                                                <td class="center col3"><%=i.getPrice()%> ₫</td>
+                                                <td class="right col2"><%=i.getQuantity()*i.getPrice()%> ₫</td>
                                             </tr>
                             <%
                                         }
@@ -275,24 +256,78 @@
                     </div>
                 </div>
         </div>
+        
+        <div id="order-info" class="main-block">
+            <h2 class="heading2 block-heading">Giao hàng</h2>
+                <div class="info-item2">
+                    <label class="item-label" >Đơn vị vận chuyển:</label>
+                    <div class="item-content2 item-content" id="deliver" name="deliver" >Ninja Van</div>
+                </div>
+                <div class="info-item2">
+                    <label class="item-label" for="delivery-status">Trạng thái giao hàng:</label>
+                    <div class="item-content2 item-content" id="delivery-status" name="delivery-status" ><%=order.getDelivery()%></div>
+                </div>
+                <button class="form-button" id="button-update">Cập nhật</button>
+                <div id="delivery-menu" class="delivery-menu hidden">
+                    <div class="delivery-item">
+                        <input type="checkbox" id="checkbox1" name="checkbox1" class="delivery-checkbox" value="1" checked>
+                        <label class="delivery-label" for="checkbox1">Chờ xác nhận</label>
+                    </div>
+                    <div class="delivery-item">
+                        <input type="checkbox" id="checkbox2" name="checkbox2" class="delivery-checkbox" value="2">
+                        <label class="delivery-label" for="checkbox2">Đã đóng gói</label>
+                    </div>
+                    <div class="delivery-item">
+                        <input type="checkbox" id="checkbox3" name="checkbox3" class="delivery-checkbox" value="3">
+                        <label class="delivery-label" for="checkbox3">Đang giao hàng</label> 
+                    </div>
+                    <div class="delivery-item">
+                        <input type="checkbox" id="checkbox4" name="checkbox4" class="delivery-checkbox" value="4">
+                        <label class="delivery-label" for="checkbox4">Đã giao hàng</label>
+                    </div>
+                </div>
+                <script>
+                    const updateButton = document.getElementById('button-update');
+                    const deliveryMenu = document.querySelector('.delivery-menu');
+
+                    updateButton.addEventListener('click', () => {
+                      deliveryMenu.classList.toggle('hidden');
+                      if (deliveryMenu.classList.contains('hidden')) {
+                        updateButton.textContent = 'Cập nhật';
+                      } else {
+                        updateButton.textContent = 'Lưu';
+                      }
+                    });
+                    const checkboxes = document.querySelectorAll('.delivery-checkbox');
+                    const deliverylabels = document.querySelectorAll('.delivery-label');
+
+                    checkboxes.forEach((checkbox, index) => {
+                      checkbox.addEventListener('change', () => {
+                        if (checkbox.checked) {
+                          for (let i = 0; i < index; i++) {
+                            checkboxes[i].checked = true;
+                            deliverylabels[i].checked = true;
+                          }
+                        }
+                        else {
+                          for (let i = index + 1; i < checkboxes.length; i++) {
+                            checkboxes[i].checked = false;
+                          }
+                        }
+                      });
+                    });
+                </script>
+        </div>
              
         <div id="payment-info" class="main-block">
                 <h2 class="heading2 block-heading">Thanh toán</h2>
                 <div class="info-item2">
-                    <label class="item-label" for="hoten">Hình thức thanh toán:</label>
-                    <div class="item-content" id="hoten" name="hoten" >Thanh toán khi nhận hàng</div>
+                    <label class="item-label" for="payment-type">Hình thức thanh toán:</label>
+                    <div class="item-content2 item-content" id="payment-type" name="payment-type" >Thanh toán khi nhận hàng</div>
                 </div>
                 <div class="info-item2">
-                    <label class="item-label" for="hoten">Trạng thái thanh toán:</label>
-                    <div class="item-content" id="hoten" name="hoten" ><%=order.getPayment()%></div>
-                </div>
-        </div>
-        
-        <div id="other-info" class="main-block">
-                <h2 class="heading2 block-heading">Khác</h2>
-                <div class="info-item2">
-                    <label class="item-label" for="note">Ghi chú:</label>
-                    <div class="item-content2 item-content" id="note" name="note" ><%=(order.getNote()==null) ? "--Trống--" : order.getNote()%></div>
+                    <label class="item-label" for="payment-status">Trạng thái thanh toán:</label>
+                    <div class="item-content2 item-content" id="payment-status" name="payment-status" ><%=order.getPayment()%></div>
                 </div>
         </div>
     </div>

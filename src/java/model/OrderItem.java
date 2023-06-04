@@ -1,13 +1,14 @@
 package model;
 
 public class OrderItem {
-    private int id, order_id, product_id, quantity;
+    private int id, order_id, product_id, quantity, price;
 
-    public OrderItem(int id, int order_id, int product_id, int quantity) {
+    public OrderItem(int id, int order_id, int product_id, int quantity, int price) {
         this.id = id;
         this.order_id = order_id;
         this.product_id = product_id;
         this.quantity = quantity;
+        this.price = price;
     }
 
     public int getId() {
@@ -41,5 +42,13 @@ public class OrderItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
 }

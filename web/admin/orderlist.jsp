@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="model.Order"%>
+<%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -142,29 +143,36 @@
                                     <th class="table-header col2">Tổng tiền hàng</th>
                                     <th class="table-header col1">Khuyến mãi</th>
                                     <th class="table-header col2">Phí vận chuyển</th>
-                                    <th class="table-header col3">Tổng Thanh Toán</th>
-                                    <th class="table-header col3">Giao hàng</th>
-                                    <th class="table-header col3">Thanh toán</th>
+                                    <th class="table-header col2">Thanh Toán</th>
+                                    <th class="table-header col2">Giao hàng</th>
+                                    <th class="table-header col2">Trạng thái</th>
                                     <th class="table-header col2">Ghi Chú</th>
                                 </tr>
                             </thead>
                             <tbody>
                         <%
                             List<Order> list_Order = (List<Order>)request.getAttribute("list_Order");
-                            int t = 0, k = 0, j;
+                            List<User> list_User = (List<User>)request.getAttribute("list_User");
+                            String user_name = "";
                             for(Order i:list_Order){
                                 int id = 1000000 + i.getId();
+                                for(User u : list_User){
+                                    if(u.getId()==i.getUser_id()){
+                                        user_name = u.getFullname();
+                                        break;
+                                    }
+                                }
                         %>
                                 <tr onclick="insert(<%=i.getId()%>)">
                                     <td class="center col1"><a href="orderdetail?id=<%=id%>">#<%=id%></a></td>
                                     <td class="center col2"><%=i.getCreate_date()%></td>
-                                    <td class="center col2"><%=i.getUser_id()%></td>
+                                    <td class="left col2"><%=user_name%></td>
                                     <td class="center col2"><%=i.getCost()%></td>
                                     <td class="center col1"><%=i.getDiscount()%></td>
                                     <td class="center col2"><%=i.getFee()%></td>
-                                    <td class="right col3"><%=i.getTotal()%></td>
-                                    <td class="center col3"><%=i.getDelivery()%></td>
-                                    <td class="center col3"><%=i.getPayment()%></td>
+                                    <td class="center col2"><%=i.getTotal()%></td>
+                                    <td class="center col2"><%=i.getDelivery()%></td>
+                                    <td class="center col2"><%=i.getPayment()%></td>
                                     <td class="left col4"><%=(i.getNote()==null) ? "--Trống--" : i.getNote()%></td>
                                 </tr>
                          <%
