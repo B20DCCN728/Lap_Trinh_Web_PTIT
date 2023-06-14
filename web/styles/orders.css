@@ -1,0 +1,121 @@
+ /* App container */
+ .app__container {
+    background-color: #F5F5F5;
+  }
+ 
+.home-order {
+    padding: 36px 0;
+}
+
+/* Carts */
+.orders {
+    width: 100%;
+}
+
+.orders__heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.orders-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.orders-item__list-heading {
+  background-color: #f2f2f2; 
+  border-radius: 1px;
+  border: 1px solid var(--border-product-color);  
+}
+
+.orders-item__title {
+  background-color: rgb(27, 164, 125);
+  text-align: left;
+  padding: 12px;
+  color: var(--white-color);
+  font-size: 1.6rem;
+}
+
+.orders-item__list {
+  border: 1px solid var(--border-product-color);  
+}
+
+.orders-item__list:hover {
+  background-color: #ddd;;
+}
+
+.orders-item {
+  font-size: 1.6rem;
+  font-weight: 400;  
+  padding: 6px 10px;
+}
+
+.orders-item__img {
+  border: 1px solid var(--border-product-color);  
+  width: 80px;
+}
+
+.orders-item__quantity {
+  padding-left: 10px;
+}
+
+.orders-item__delete {
+
+}
+
+.orders-item__delete-active {
+  margin: 0 30px;
+  display: inline-flex;
+  text-decoration: none;
+  height: 100%;
+}
+
+.orders-item__delete-icon {
+  font-size: 3rem;
+  color: rgb(227, 66, 41);
+}
+
+.orders-item__delete-icon:hover {
+  color: rgb(175, 34, 12);
+}
+
+/* orders payment */
+.orders-payment {
+  border: 1px solid var(--border-product-color);
+  padding: 14px;
+}
+
+.orders-payment__heading {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.orders-payment__detail {
+  border: 1px solid var(--border-product-color);
+  padding: 20px 12px;
+  text-align: right;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.orders-payment__detail-total {
+  margin-bottom: 12px;
+  display: block;
+}
+
+.orders-payment__detail-totalcost {
+  display: block;
+}
+
+.orders-payment__detail-submit {
+  min-width: 100%;
+  margin: 32px 0 20px 0;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 1.4rem;
+}

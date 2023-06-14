@@ -1,8 +1,9 @@
 <%@page import="java.util.List"%>
-<%@page import="model.User"%>
-<%@page import="model.Order"%>
-<%@page import="model.OrderItem"%>
-<%@page import="model.Product"%>
+<%@page import="model.admin.User"%>
+<%@page import="model.admin.Order"%>
+<%@page import="model.admin.OrderItem"%>
+<%@page import="model.admin.Product"%>
+<%@page import="model.admin.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,129 +12,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
-    <link rel="stylesheet" href="admin_styles/style4.css">
+    <link rel="stylesheet" href="admin_styles/styles.css">
     <link rel="stylesheet" href="admin_styles/order_detail.css">
-    <title>Phụ Kiện Công Nghệ</title>
+    <title>Thế Giới Phụ Kiện</title>
 </head>
 <body>
-<header id="header">
-    <div id="logo-group">
-        <span id="logo"><a href="/admin#/home"> <img src="" alt="RUNTIME"> </a></span>
-        <span id="view-site"> <a href="/" target="_blank"><i class="fa fa-external-link"></i></a> </span>
-    </div>
-    <div class="pull-left">
-        
-        <div id="fullscreen" class="btn-header transparent pull-right">
-            <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>
-        
-        <div id="hide-menu" class="btn-header pull-right no-margin">
-            <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-        </div>
-
-    </div>
-
-    <div class="pull-right">
-
-        <ul id="profile-img" class="header-dropdown-list hidden-xs padding-5">
-            <li class="">
-                <a href="#" target="_self" class="dropdown-toggle  no-margin avatar" data-toggle="dropdown">
-                    <img src="/Areas/Admin/Images/avatars/user.png" alt="Phụ Kiện Công Nghệ" class="img-circle" />
-                    <span>phukien</span>
-                    <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="/admin#/userlogin/changepassword" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Đổi mật khẩu</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/admin#/userlogin" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> Tài khoản quản trị</a>
-                    </li>
-                    <li class="divider"></li>
-                    
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full Screen</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/admin/account/login" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout" data-logout-msg="Bạn có muốn đăng xuất khỏi hệ thống không?"><i class="fa fa-sign-out fa-lg"></i> <strong>Đăng xuất</strong></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <div id="logout" class="btn-header transparent pull-right hidden">
-            <span> <a href="/admin/account/login" title="Sign Out" data-action="userLogout" data-logout-msg="Bạn có muốn đăng xuất khỏi hệ thống không?"><i class="fa fa-sign-out"></i></a> </span>
-        </div>
-
-    </div>
-
-</header>
-    
-<aside id="left-panel">
-    <nav>
-        <ul>
-            <li>
-                <a id="tongquan" href="home" title="Tổng quan"><span class="menu-item-parent">Tổng quan</span></a>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
-                <ul>
-                    <li>
-                        <a href="product-list">Tất cả sản phẩm</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/productgroup">Nhóm sản phẩm</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/product/inventory">Tồn kho</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Tin tức</span>
-                <ul>
-                    <li>
-                        <a href="/admin#/news/create">Thêm mới tin tức</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/news">Danh sách tin tức</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/newsgroup">Nhóm tin tức</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Đơn hàng</span>
-                <ul>
-                    <li>
-                        <a href="orderlist">Đơn hàng</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/order/shipping">Vận chuyển</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/order/draft">Đơn hàng nháp</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Khách hàng</span>
-                <ul>
-                    <li>
-                        <a href="user-list">Danh sách khách hàng</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/contact">Liên hệ từ khách hàng</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/newsletter">Danh sách Email đăng ký</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-
-</aside>
-<div id="right-panel">
+<!--blur-->
+<div id="overlay" class="overlay"></div>
+<!--header-->
+<%@include file="/admin/header.jsp"%>
+<!--menu-->
+<%@include file="/admin/menu.jsp"%>
+<!--main-->
+<div class="right-panel">
     <% 
         Order order = (Order) request.getAttribute("Order");
         User user = (User) request.getAttribute("User");
@@ -142,6 +33,7 @@
         <h1 id="head">Đơn hàng #<%=1000000+order.getId()%></h1>
         <button class="form-button" id="button-save" type="submit" formaction="update-order-detail">Lưu</button>
         <input type="text" id="orderid" name="orderid" value="<%=order.getId()%>" hidden="true"/>
+        <input type="text" id="parent" name="parent" value="<%=request.getAttribute("parent")%>" hidden="true"/>
         <input type="text" id="payment-input" name="payment-input" value="<%=order.getPayment()%>" hidden="true"/>
         <input type="text" id="delivery-input" name="delivery-input" value="<%=order.getDelivery()%>" hidden="true"/>
     </form>
@@ -185,13 +77,13 @@
                 <div id="block-table" class="main-block">
                     
                     <div id="box-product">
-                        <table id="table-product" cellpadding="3" cellspacing="0" border="0">
+                        <table id="table-product" class="sort-table" cellpadding="3" cellspacing="0" border="0">
                             <thead>
                                 <tr>
                                     <th class="table-header col1">ID</th>
-                                    <th class="table-header col5">Sản phẩm</th>
-                                    <th class="table-header col4">Hình ảnh</th>
-                                    <th class="table-header col3">Nhà cung cấp</th>
+                                    <th class="table-header col4">Sản phẩm</th>
+                                    <th class="table-header col1">Hình ảnh</th>
+                                    <th class="table-header col3">Danh mục</th>
                                     <th class="table-header col1">Số lượng</th>
                                     <th class="table-header col3">Đơn Giá</th>
                                     <th class="table-header col2">Thành tiền</th>
@@ -202,16 +94,23 @@
                             <%
                                 List<OrderItem> list_OrderItem = (List<OrderItem>)request.getAttribute("list_OrderItem");
                                 List<Product> list_Product = (List<Product>)request.getAttribute("list_Product");
+                                List<Category> list_Category = (List<Category>)request.getAttribute("list_Category");
                                 for(OrderItem i:list_OrderItem){
                                     for(Product p:list_Product){
                                         if(p.getId()==i.getProduct_id()){
                                             int id = 10000+p.getId();
+                                            String category = "";
+                                            for(Category c:list_Category){
+                                                if(c.getId()==p.getCategory_id()){
+                                                    category = c.getName();
+                                                }
+                                            }
                             %>
                                             <tr id="product-row">
                                                 <th class="col1"><a href="product-detail?id=<%=id%>">#<%=id%></a></th>
-                                                <td class="left col5"><%=p.getName()%></td>
-                                                <td class="col4"><img src="<%=p.getImage()%>" style="height: 20px; width: auto;"/></td>
-                                                <td class="left col3"><%=p.getSupplier()%></td>
+                                                <td class="left col4"><%=p.getName()%></td>
+                                                <td class="col1"><img src="<%=p.getImage1()%>" style="height: 20px; width: auto;"/></td>
+                                                <td class="left col3"><%=category%></td>
                                                 <td class="col1"><%=i.getQuantity()%></td>
                                                 <td class="center col3"><%=i.getPrice()%> ₫</td>
                                                 <td class="right col2"><%=i.getQuantity()*i.getPrice()%> ₫</td>
@@ -221,11 +120,12 @@
                                     }
                                 }
                             %>
-                                
+                            </tbody>
+                            <tfoot>
                                 <tr>
                                     <td class="col1"></td>
-                                    <td class="col5"></td>
                                     <td class="col4"></td>
+                                    <td class="col1"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Tổng tiền hàng:</td>
@@ -233,8 +133,8 @@
                                 </tr>
                                 <tr>
                                     <td class="col1"></td>
-                                    <td class="col5"></td>
                                     <td class="col4"></td>
+                                    <td class="col1"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Khuyến mãi:</td>
@@ -242,8 +142,8 @@
                                 </tr>
                                 <tr>
                                     <td class="col1"></td>
-                                    <td class="col5"></td>
                                     <td class="col4"></td>
+                                    <td class="col1"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Phí vận chuyển:</td>
@@ -251,14 +151,14 @@
                                 </tr>
                                 <tr id="order-total">
                                     <td class="col1"></td>
-                                    <td class="col5"></td>
                                     <td class="col4"></td>
+                                    <td class="col1"></td>
                                     <td class="col4"></td>
                                     <td class="col1"></td>
                                     <td class="left col2">Tổng thanh toán:</td>
                                     <td class="right col2"><%=order.getTotal()%> ₫</td>
                                 </tr>
-                            </tbody>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -272,8 +172,7 @@
                 </div>
                 <div class="info-item2">
                     <label class="item-label" for="delivery-status">Trạng thái giao hàng:</label>
-                    <div class="item-content2 item-content" id="delivery-status" name="delivery-status" ><%=order.getDelivery()%></div>
-                    
+                    <div class="item-content2 item-content" id="delivery-status" name="delivery-status"><%=order.getDelivery()%></div>
                 </div>
                 <button class="form-button" id="button-update1">Cập nhật</button>
                 <div id="delivery-menu" class="delivery-menu hidden">
@@ -358,7 +257,7 @@
                 <button class="form-button" id="button-update2">Cập nhật</button>
                 <div class="info-item2">
                     <label class="item-label" for="payment-status">Trạng thái thanh toán:</label>
-                    <div class="item-content2 item-content" id="payment-status" name="payment-status" ><%=order.getPayment()%></div>
+                    <div class="item-content2 item-content" id="payment-status" name="payment-status"><%=order.getPayment()%></div>
                 </div>
                 <div id="payment-menu" class="payment-menu hidden">
                     <div class="payment-item">

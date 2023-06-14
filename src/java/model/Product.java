@@ -1,51 +1,40 @@
+//Created by Campus
 package model;
 
-public class Product {
-    private int id;
-    private String name, image, supplier, des;
-    private int price, quantity_sold, quantity_remain;
+import java.io.Serializable;
+import jdk.internal.org.objectweb.asm.commons.StaticInitMerger;
 
-    public Product(int id, String name, String image, String supplier, String des, int price, int quantity_sold, int quantity_remain) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.supplier = supplier;
-        this.des = des;
+public class Product implements Serializable {
+    private int ID, price, quantity_sold, quantity_remain;
+    //private String name, imgLink1, imgLink2, title, description, address;
+
+    private String name, title, image1, image2, des;
+    
+    private Category category;
+
+    public Product() {
+    }
+    
+    public Product(int ID, String name, String title, Category category, String image1, String image2, String des, int price, int quantity_sold, int quantity_remain) {
+        this.ID = ID;
+        this.category = category;
         this.price = price;
         this.quantity_sold = quantity_sold;
         this.quantity_remain = quantity_remain;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDes() {
-        return des;
-    }
-
-    public void setDes(String des) {
+        this.title = title;
+        this.image1 = image1;
+        this.image2 = image2;
         this.des = des;
+        this.category = category;
+    }
+    
+    public int getID() {
+        return ID;
     }
 
-    public String getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int getPrice() {
@@ -72,12 +61,52 @@ public class Product {
         this.quantity_remain = quantity_remain;
     }
 
-    public String getImage() {
-        return image;
+    public String getName() {
+        return name;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getImage1() {
+        return image1;
+    }
+
+    public void setImage1(String image1) {
+        this.image1 = image1;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
 }

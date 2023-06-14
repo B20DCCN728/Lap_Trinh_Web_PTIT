@@ -1,0 +1,41 @@
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f1f1f1;
+    background-color: rgb(239, 233, 233);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    color: #333;
+    font-weight: 600;   
+    font-size: 2rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+  
+  .carts-payment__detail-submit {
+  min-width: 200px;
+  margin: 32px 0 20px 0;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 1.4rem;
+}

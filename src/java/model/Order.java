@@ -1,24 +1,52 @@
+//Created by Campus
 package model;
 
-public class Order {
-    private int id;
-    private String create_date;
-    private int user_id, cost, discount, fee, total;
-    private String payment, delivery, note;
+import java.io.Serializable;
+import java.sql.Date;
+import java.util.ArrayList;
 
-    public Order(int id, String create_date, int user_id, int cost, int discount, int fee, String payment, String delivery, String note) {
+public class Order implements Serializable {
+    private int id;
+    private Date createdDate;
+    private User client;
+    private int cost;
+    private int discount;
+    private int fee;
+    private int total;
+    private String payment;
+    private String delivery;
+    private String note;
+    private ArrayList<OrderItem> listOrderItems;
+
+    public Order() {
+    }
+
+    public Order(int id, Date createdDate, User client, int cost, 
+            int discount, int fee, int total, String payment, String delivery, 
+            String note, ArrayList<OrderItem> listOrderItems) {
+        
         this.id = id;
-        this.create_date = create_date;
-        this.user_id = user_id;
+        this.createdDate = createdDate;
+        this.client = client;
         this.cost = cost;
         this.discount = discount;
         this.fee = fee;
-        this.total = cost - discount + fee;
-        this.delivery = delivery;
+        this.total = total;
         this.payment = payment;
+        this.delivery = delivery;
         this.note = note;
+        this.listOrderItems = listOrderItems;
+        
     }
 
+    public Order(User client, int cost, int fee, int total, ArrayList<OrderItem> listOrderItems) {
+        this.client = client;
+        this.cost = cost;
+        this.fee = fee;
+        this.total = total;
+        this.listOrderItems = listOrderItems;
+    }
+    
     public int getId() {
         return id;
     }
@@ -27,20 +55,20 @@ public class Order {
         this.id = id;
     }
 
-    public String getCreate_date() {
-        return create_date;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreate_date(String create_date) {
-        this.create_date = create_date;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getClient() {
+        return client;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setClient(User client) {
+        this.client = client;
     }
 
     public int getCost() {
@@ -75,20 +103,20 @@ public class Order {
         this.total = total;
     }
 
-    public String getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
-    }
-
     public String getPayment() {
         return payment;
     }
 
     public void setPayment(String payment) {
         this.payment = payment;
+    }
+
+    public String getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
     }
 
     public String getNote() {
@@ -99,5 +127,17 @@ public class Order {
         this.note = note;
     }
 
+    public ArrayList<OrderItem> getListOrderItems() {
+        return listOrderItems;
+    }
+
+    public void setListOrderItems(ArrayList<OrderItem> listOrderItems) {
+        this.listOrderItems = listOrderItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", createdDate=" + createdDate + ", client=" + client + ", cost=" + cost + ", discount=" + discount + ", fee=" + fee + ", total=" + total + ", payment=" + payment + ", delivery=" + delivery + ", note=" + note + ", listOrderItems=" + listOrderItems + '}';
+    }
     
 }

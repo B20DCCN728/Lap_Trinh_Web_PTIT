@@ -1,16 +1,40 @@
+//Created by Campus
 package model;
 
-public class OrderItem {
-    private int id, order_id, product_id, quantity, price;
+import java.io.Serializable;
 
-    public OrderItem(int id, int order_id, int product_id, int quantity, int price) {
+public class OrderItem implements Serializable {
+    private int id, orderID, quantity, price;
+    private Product product;
+    private int total;
+
+    public OrderItem() {
+    }
+
+    public OrderItem(int id, int orderID, int quantity, Product product) {
         this.id = id;
-        this.order_id = order_id;
-        this.product_id = product_id;
+        this.orderID = orderID;
         this.quantity = quantity;
+        this.product = product;
+    }
+    
+    public OrderItem(int id, int orderID, Product product, int quantity, int price) {
+        this.id = id;
+        this.orderID = orderID;
+        this.quantity = quantity;
+        this.product = product;
         this.price = price;
     }
 
+//    public OrderItem(int id, int orderID, int quantity, int price, Product product, int total) {
+//        this.id = id;
+//        this.orderID = orderID;
+//        this.quantity = quantity;
+//        this.price = price;
+//        this.product = product;
+//        this.total = total;
+//    }
+    
     public int getId() {
         return id;
     }
@@ -19,20 +43,12 @@ public class OrderItem {
         this.id = id;
     }
 
-    public int getOrder_id() {
-        return order_id;
+    public int getOrderID() {
+        return orderID;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
     public int getQuantity() {
@@ -51,4 +67,25 @@ public class OrderItem {
         this.price = price;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getTotal() {
+        return quantity * product.getPrice();
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" + "id=" + id + ", orderID=" + orderID + ", quantity=" + quantity + ", price=" + price + ", product=" + product + ", total=" + total + '}';
+    }
+ 
 }

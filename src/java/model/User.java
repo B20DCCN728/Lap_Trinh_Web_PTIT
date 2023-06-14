@@ -1,21 +1,33 @@
+//Created by Campus
 package model;
 
-public class User {
-    private int id;
-    private String fullname, dob, phone, email, password, address;
-    private int is_admin;
-    private String note;
+import java.io.Serializable;
+import java.util.Date;
 
-    public User(int id, String fullname, String dob, String phone, String email, String password, String address, int is_admin, String note) {
+public class User implements Serializable {
+    private int id;
+    private String fullName;
+    private Date dob;
+    private String phone;
+    private String email;
+    private String password;
+    private String address;
+    private int isAdmin;
+    private String node;
+
+    public User() {
+    }
+
+    public User(int id, String fullName, Date dob, String phone, String email, String password, String address, int isAdmin, String node) {
         this.id = id;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.dob = dob;
         this.phone = phone;
         this.email = email;
         this.password = password;
         this.address = address;
-        this.is_admin = is_admin;
-        this.note = note;
+        this.isAdmin = isAdmin;
+        this.node = node;
     }
 
     public int getId() {
@@ -26,19 +38,19 @@ public class User {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
@@ -74,20 +86,25 @@ public class User {
         this.address = address;
     }
 
-    public int getIs_admin() {
-        return is_admin;
+    public int getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setIs_admin(int is_admin) {
-        this.is_admin = is_admin;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public String getNote() {
-        return note;
+    public String getNode() {
+        return node;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNode(String node) {
+        this.node = node;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", fullName=" + fullName + ", dob=" + dob + ", phone=" + phone + ", email=" + email + ", password=" + password + ", address=" + address + ", isAdmin=" + isAdmin + ", node=" + node + '}';
     }
     
 }

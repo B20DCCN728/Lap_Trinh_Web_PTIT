@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="model.Product"%>
+<%@page import="model.admin.Product"%>
+<%@page import="model.admin.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,170 +9,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_styles/font-awesome.css">
-    <link rel="stylesheet" href="admin_styles/style4.css">
+    <link rel="stylesheet" href="admin_styles/styles.css">
     <link rel="stylesheet" href="admin_styles/product_list.css">
-    <title>Phụ Kiện Công Nghệ</title>
+    <title>Thế Giới Phụ Kiện</title>
 </head>
 <body>
-<header id="header">
-    <div id="logo-group">
-        <span id="logo"><a href="/admin#/home"> <img src="" alt="RUNTIME"> </a></span>
-        <span id="view-site"> <a href="/" target="_blank"><i class="fa fa-external-link"></i></a> </span>
-    </div>
-    <div class="pull-left">
-        
-        <div id="fullscreen" class="btn-header transparent pull-right">
-            <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>
-        
-        <div id="hide-menu" class="btn-header pull-right no-margin">
-            <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-        </div>
-
-    </div>
-
-    <div class="pull-right">
-
-        <ul id="profile-img" class="header-dropdown-list hidden-xs padding-5">
-            <li class="">
-                <a href="#" target="_self" class="dropdown-toggle  no-margin avatar" data-toggle="dropdown">
-                    <img src="/Areas/Admin/Images/avatars/user.png" alt="Phụ Kiện Công Nghệ" class="img-circle" />
-                    <span>phukien</span>
-                    <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="/admin#/userlogin/changepassword" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Đổi mật khẩu</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/admin#/userlogin" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> Tài khoản quản trị</a>
-                    </li>
-                    <li class="divider"></li>
-                    
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full Screen</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/admin/account/login" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout" data-logout-msg="Bạn có muốn đăng xuất khỏi hệ thống không?"><i class="fa fa-sign-out fa-lg"></i> <strong>Đăng xuất</strong></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <div id="logout" class="btn-header transparent pull-right hidden">
-            <span> <a href="/admin/account/login" title="Sign Out" data-action="userLogout" data-logout-msg="Bạn có muốn đăng xuất khỏi hệ thống không?"><i class="fa fa-sign-out"></i></a> </span>
-        </div>
-
-    </div>
-
-</header>
-    
-<aside id="left-panel">
-    <nav>
-        <ul>
-            <li>
-                <a id="tongquan" href="home" title="Tổng quan"><span class="menu-item-parent">Tổng quan</span></a>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Sản phẩm</span>
-                <ul>
-                    <li>
-                        <a href="product-list">Tất cả sản phẩm</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/productgroup">Nhóm sản phẩm</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/product/inventory">Tồn kho</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Tin tức</span>
-                <ul>
-                    <li>
-                        <a href="/admin#/news/create">Thêm mới tin tức</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/news">Danh sách tin tức</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/newsgroup">Nhóm tin tức</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Đơn hàng</span>
-                <ul>
-                    <li>
-                        <a href="orderlist">Đơn hàng</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/order/shipping">Vận chuyển</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/order/draft">Đơn hàng nháp</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-menu"><span class="menu-item-parent">Khách hàng</span>
-                <ul>
-                    <li>
-                        <a href="user-list">Danh sách khách hàng</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/contact">Liên hệ từ khách hàng</a>
-                    </li>
-                    <li>
-                        <a href="/admin#/newsletter">Danh sách Email đăng ký</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-
-</aside>
-<div id="right-panel">
+<!--blur-->
+<div id="overlay" class="overlay"></div>
+<!--header-->
+<%@include file="/admin/header.jsp"%>
+<!--menu-->
+<%@include file="/admin/menu.jsp"%>
+<!--main-->
+<div class="right-panel">
     
     <div id="top">
         <h1 id="head">Danh sách sản phẩm</h1>
-
-        <a class="form-button" id="button-create" href="create_product.jsp">Thêm sản phẩm</a>
+        <form id="block-search" method="post">
+            <input class="form-input" id="search-input" name="search-input" type="text" value="<%=(request.getAttribute("search-content") == null) ? "" : request.getAttribute("search-content")%>" placeholder="Nhập tên sản phẩm cần tìm"/>
+            <button class="form-button button-green" id="button-search" type="submit" formaction="product-list">Tìm kiếm</button>
+        </form>
+        <a class="form-button" id="button-create" href="create-product-view">Thêm sản phẩm</a>
     </div>
                     
                 <div id="block-table" class="main-block">
                     
-                    <div id="box">
-                        <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
+                    <div class="box">
+                        <table id="" class="sort-table border-table" cellpadding="3" cellspacing="0" border="0">
                             <thead>
                                 <tr>
                                     <th id="idleft" class="table-header col1" >Mã SP</th>
-                                    <th class="table-header col3">Tên SP</th>
-                                    <th class="table-header col2">Hình ảnh</th>
-                                    <th class="table-header col3">Nhà cung cấp</th>
-                                    <th class="table-header col2">Giá bán</th>
-                                    <th class="table-header col2">Đã bán</th>
-                                    <th class="table-header col2">Còn lại</th>
-                                    <th class="table-header col2">Thao tác</th>
+                                    <th class="table-header col4">Tên SP</th>
+                                    <th class="table-header col1">Hình ảnh</th>
+                                    <th class="table-header col3">Danh mục</th>
+                                    <th class="table-header col1">Giá bán</th>
+                                    <th class="table-header col1">Đã bán</th>
+                                    <th class="table-header col1">Còn lại</th>
+                                    <th class="table-header col1">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
                         <%
                             List<Product> list_Product = (List<Product>)request.getAttribute("list_Product");
+                            List<Category> list_Category = (List<Category>)request.getAttribute("list_Category");
                             int t = 0, k = 0, j;
                             for(Product i:list_Product){
                                 int id = 10000 + i.getId();
+                                String category = "";
+                                for(Category c:list_Category){
+                                    if(c.getId()==i.getCategory_id()){
+                                        category = c.getName();
+                                        break;
+                                    }
+                                }
                         %>
-                                <tr onclick="insert(<%=i.getId()%>)">
+                                <tr>
                                     <td class="center col1"><a href="product-detail?id=<%=id%>">#<%=id%></a></td>
-                                    <td class="left col3"><%=i.getName()%></td>
-                                    <td class="center col2"><img src="<%=i.getImage()%>" style="height: 30px; width: auto;"/></td>
-                                    <td class="left col3"><%=i.getSupplier()%></td>
-                                    <td class="center col2"><%=i.getPrice()%></td>
-                                    <td class="center col2"><%=i.getQuantity_sold()%></td>
-                                    <td class="center col2"><%=i.getQuantity_remain()%></td>
-                                    <td class="center col2"><a class="form-button" id="button-delete" href="delete-product?id=<%=id%>">Xoá</a></td>
+                                    <td class="left col4 product-name"><%=i.getName()%></td>
+                                    <td class="center col1"><img src="<%=i.getImage1()%>" style="height: 30px; width: auto;"/></td>
+                                    <td class="left col3"><%=category%></td>
+                                    <td class="center col1"><%=i.getPrice()%></td>
+                                    <td class="center col1"><%=i.getQuantity_sold()%></td>
+                                    <td class="center col1"><%=i.getQuantity_remain()%></td>
+                                    <td class="center col6">
+                                        <div id="action_col">
+                                            <a class="form-button button-red" id="button-delete" href="#" data-product-id="<%=id%>" data-product-name="<%=i.getName()%>" onclick="showPopupDelete(this)">Xoá</a>
+                                            <a class="form-button button-green" id="button-update" href="product-detail?id=<%=id%>">Sửa</a>
+                                        </div>
+                                    </td>
                                 </tr>
-                         <%
+                        <%
                             }
                         %>
                             </tbody>
@@ -179,6 +86,40 @@
                     </div>
                 </div>
 </div>
+<div id="popup-delete" class="popup">
+        <p id="question"></p>
+        <button onclick="closePopupDelete()">Huỷ</button>
+        <button onclick="delete_product()">OK</button>
+</div>
 </body>
+<script>
+    function showPopupDelete(button) {
+        var productName = button.getAttribute("data-product-name");
+        var productId = button.getAttribute("data-product-id");
+        var popup = document.getElementById("popup-delete");
+        var question = document.getElementById("question");
+        var overlay = document.getElementById('overlay');
+        question.innerHTML = "Bạn chắc chắn muốn xoá sản phẩm " + productName + " ?";
+        var okButton = popup.getElementsByTagName("button")[1];
+        okButton.onclick = function() {
+            delete_product(productId);
+            closePopupDelete();
+        };
+        overlay.style.display = 'block';
+        popup.style.display = "block";
+        return false;
+    }
+
+    function closePopupDelete() {
+        var overlay = document.getElementById('overlay');
+        var popup = document.getElementById("popup-delete");
+        overlay.style.display = 'none';
+        popup.style.display = "none";
+    }
+
+    function delete_product(productId) {
+        window.location.href = 'delete-product?id=' + productId;
+    }
+</script>
 <script src="admin_scripts/admin.js"></script>
 </html>

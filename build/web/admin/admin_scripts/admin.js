@@ -24,7 +24,7 @@ for (var i = 0; i < dropdowns.length; i++) {
 }
 
 function makeSortable() {
-    const table = document.querySelector('#tbl-content');
+    const table = document.querySelector('.sort-table');
     const headers = table.querySelectorAll('.table-header');
 
     headers.forEach((header, index) => {
@@ -66,4 +66,3 @@ function sortTableByColumn(table, column, asc = true) {
     tBody.append(...sortedRows);
 }
 makeSortable();
-//check-delivery

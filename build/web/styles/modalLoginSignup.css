@@ -1,0 +1,148 @@
+/* Authen modal */
+
+.auth-form {
+  width: 500px;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.auth-form__container {
+  padding: 0 32px;
+}
+
+.auth_form__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  margin-top: 10px;
+}
+
+.auth_form__heading {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.auth-form__switch-btn {
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+.auth-form__form {
+  /* margin-top: 16px; */
+}
+
+.auth-form__input {
+  width: 100%;
+  height: 40px;  
+  margin-top: 16px;
+  padding: 0 12px;
+  font-size: 1.4rem;
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  outline: none;
+}
+
+.auth-form__input:focus {
+  border-color: #777;
+}
+
+/* bonus */
+
+.auth-form__aside {
+  margin-top: 18px;
+}
+
+/* help */
+
+.auth-form__help {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auth-form__help-link {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #939393;
+}
+
+.auth-form__help-separate {
+  display: block;
+  border-left: 1px solid var(--border-color);
+  height: 22px;
+  margin: -2.5px 16px 0;
+}
+
+.auth-form__help-forgot {
+  color: var(--primary-color);
+}
+
+/* join us */
+
+.auth-form__policy-text {
+  font-weight: 400;
+  line-height: 1.8rem;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 12px;
+}
+
+.auth-form__text-link {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+ 
+
+.auth-form__controls {
+  margin-top: 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auth-form__control-back {
+  margin-right: 16px;
+  /* background-color: transparent; */
+}
+/* social */
+.auth-form__socials {
+  background-color: #f5f5f5;
+  padding: 16px 36px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+
+.auth-form__socials-icon {
+  font-size: 1.8rem;
+}
+
+.auth-form__socials-title {
+  margin: 0 36px;
+}
+
+.auth-form__facebook-icon {
+  color: var(--white-color);
+  background-color: #3A5A98;
+  margin-right: 4px;
+}
+
+.auth-form__google-icon {
+  background-color: var(--white-color);
+  color: #666;
+  margin-left: 4px;
+}
+
+.auth-form__signup-announcement {
+    margin: 6px 2px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #e21616;
+}
+
+.btn--primary:hover {
+    background-color: var(--primary-color-hover);
+}

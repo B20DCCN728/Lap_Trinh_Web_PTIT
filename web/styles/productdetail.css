@@ -1,0 +1,226 @@
+/*Created by Campus*/
+
+/* App container */
+.app__container {
+  background-color: #F5F5F5;
+}
+
+.app__content {
+  padding-top: 36px;
+}
+
+/* Product detail */
+.product-detail__img {
+    width: 100%;
+    border: 1px solid var(--border-product-color);
+    border-radius: 1px;
+}
+
+.product-detail {
+    border-right: 1px solid var(--border-product-color);
+    padding: 0 12px;
+}
+
+/* Title */
+.product-detail__title {
+    font-size: 1.7rem;
+    line-height: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-product-color);
+}
+
+/* Price and quantity */
+.product-detail__status {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    border-bottom: 1px solid var(--border-product-color);
+}
+
+.product-detail__status-content {
+    font-size: 1.7rem;
+    padding: 10px 0;
+    font-weight: 400;
+    width: 50%;
+    color: var(--text-color);
+}
+
+.product-detail__status-content:first-child {
+    color: var(--primary-color);
+}
+
+.product-detail__status-content:last-child {
+    text-align: center;
+    /* padding-left: 4px; */
+    border-left: 1px solid var(--border-product-color);
+}
+
+/* Select Quantities */
+.product-detail__quantity {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-product-color);
+}
+
+.product-detail__quantity-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.product-detail__quantity-select {
+    font-size: 1.4rem;
+    padding-right: 4px;
+    margin: auto;
+    font-weight: 400; 
+    color: var(--text-color);
+}
+
+.product-detail__quantity--value {
+    flex: 1;
+    margin: 0px 3px 0 0;
+    height: 30px;
+    border-radius: 2px;
+    outline: none;
+    font-size: 1.4rem;
+    border: 1px solid var(--border-product-color);
+    background-color: var(--white-color);
+    color: var(--text-color);
+}
+
+.product-detail__quantity-btn {
+
+}
+
+.btn-minus {
+    padding: 0 16px;
+}
+
+/* Add to cart */
+.product-detail__cart {
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-detail__cart-btn:hover {
+   background-color: var(--primary-color-hover);
+}
+
+.product-detail__cart-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    min-width: 180px;
+    height: 40px;
+    font-size: 1.6rem;
+}
+
+.product-detail__cart-add {
+
+}
+
+.product-detail__cart-order {
+
+}
+
+.product-detail__cart-icon {
+    padding-right: 10px;
+}
+
+/* <!-- Description --> */
+.product-info {
+    margin: 40px 0;
+    /* padding: 0 12px; */
+}
+
+.product-info__option {
+    width: 20%;
+    border: 1px solid var(--border-product-color);
+    font-size: 1.8rem;
+    font-weight: 400;
+    padding: 20px 0;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.product-info__body {
+    border: 1px solid var(--border-product-color);
+    padding: 0 12px;
+}
+
+.product-info__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.product-info__content {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.product-info__img {
+    width: 80%;
+}
+
+/* Comment */
+.product-comment {
+    margin: 10px 0 80px 0;
+    /* padding: 0 12px; */
+}
+
+.product-comment__option {
+    width: 30%;
+    border: 1px solid var(--border-product-color);
+    font-size: 1.8rem;
+    font-weight: 400;
+    padding: 20px 0;
+    text-align: center;
+    color: var(--primary-color);
+}
+.product-comment__client {
+    padding: 20px;
+    border: 1px solid var(--border-product-color);
+}
+
+.product-comment__client-each {
+    border: 1px solid var(--border-product-color);
+    padding: 0 12px;
+    margin-bottom: 20px;
+}
+
+.product-comment__name{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.product-comment__content {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.product-comment__me {
+    margin: 20px 0;
+    display: flex;
+}
+
+.product-comment__value {
+    flex: 1;
+    margin-right: 10px;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    border: 1px solid var(--border-product-color);
+    outline: none;
+}
+
+.product-comment__btn {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.product-comment__btn:hover {
+    background-color: var(--primary-color-hover);
+}
+

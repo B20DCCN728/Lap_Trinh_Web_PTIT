@@ -1,24 +1,56 @@
 #top {
     width: 100%;
+    height: 60px;
     background: #fff;
     display: flex;
+    float: left;
+    z-index: 2;
 }
 #head {
     margin: 1%;
 }
+#block-search {
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    float: left;
+    margin: 1% 2%;
+}
+#search-input {
+    margin-left: 0;
+}
+#action_col {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-self: center;
+}
 .form-button {
-    left: 80%;
-    padding: 5px 16px;
+    height: 100%;
+    padding: 5px 10px;
+    margin: 10px 20px;
     font-weight: 600;
     font-size: 1.2rem;
     color: #fff;
     border: none;
     border-radius: 4px;
+    justify-content: center;
+    align-self: center;
     outline: none;
     cursor: pointer;
 }
+.button-red {
+    background-color: #ff3a3a;
+}
+.button-green {
+    background-color: #1dbfaf;
+}
 #button-create {
-    height: 8%;
+    height: 60%;
+    left: 80%;
     margin: 1%;
     background-color: #1dbfaf;
     margin-left: auto;
@@ -27,11 +59,44 @@
     background-color: #1ac7b6;
 }
 #button-delete {
-    height: 10px;
-    margin: 0.5%;
+    height: fit-content;
+    margin: 1%;
+    margin-right: 10px;
     font-size: 0.8rem;
-    background-color: #ff3a3a;
 }
 #button-delete:hover {
     background-color: #ff4d4d;
+}
+#button-update {
+    height: fit-content;
+    margin: 1%;
+    font-size: 0.8rem;
+    background-color: #1dbfaf;
+}
+#button-search {
+    width: fit-content;
+    height: 30px;
+    margin: 0.5%;
+    font-size: 1rem;
+    background-color: #1dbfaf;
+}
+#button-update:hover, #button-search:hover {
+    background-color: #1ac7b6;
+}
+
+.form-input {
+    width: 60%;
+    height: 30px;
+    margin-left: 40%;
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    align-self: center;
+    justify-content: right;
+}
+
+.form-input:hover {
+    border-color: #1dbfaf;
 }
