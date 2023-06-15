@@ -1,4 +1,3 @@
-﻿ALTER TABLE Products ALTER COLUMN name NVARCHAR(max)
 INSERT INTO Products (name, title, category_id, image1, image2, des, price, quantity_sold, quantity_remain)
 VALUES
 (N'Ốp lưng IP 11', N'Ốp lưng IP11 3MS 2023', 1, N'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/m/p/mpu73_av2_1.jpg', N'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/m/p/mpu73_1.jpg', N'Ốp lưng Iphone 11 trong suốt cực bền', 35000, 12, 188),
