@@ -2,7 +2,6 @@
 package control;
 
 import dao.CategoryDAO;
-import dao.CommentDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import model.OrderItem;
 import model.Category;
 import model.User;
-import model.Comment;
 import model.Product;
 
 /**
